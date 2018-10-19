@@ -4,5 +4,7 @@ module ClinVar
   module RDF
   end
 
-  autoload :XSD, 'clinvar/xsd'
+  module XML
+    autoload :XSD, 'clinvar/xml/xsd'
+  end
 end

@@ -9,6 +9,6 @@ output = File.expand_path('../../lib/clinvar/rdf/model.rb', __FILE__)
 raise('File not found') unless File.exist?(input)
 
 File.open(output, 'w') do |f|
-  f << ClinVar::XSD.open(input) { |xsd| xsd.to_ruby }
+  f << ClinVar::XML::XSD.open(input) { |xsd| xsd.to_ruby }
   STDERR.puts "wrote to #{output}"
 end
