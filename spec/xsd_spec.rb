@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe ClinVar::XSD do
 
-  let (:xsd_sample) { File.expand_path('../../sample/variation_archive_20180705.xsd', __FILE__) }
+  let (:xsd_sample) { URI.join('file:///', File.expand_path('../sample/variation_archive_20180705.xsd', __FILE__)) }
 
   it 'should respond to .open' do
     expect(ClinVar::XSD.respond_to?(:open)).to be_truthy
@@ -29,17 +29,17 @@ RSpec.describe ClinVar::XSD do
   end
 
   it 'should respond to #to_ruby' do
-    expect(ClinVar::XSD.new.respond_to?(:to_ruby)).to be_truthy
+    expect(ClinVar::XSD.new(nil).respond_to?(:to_ruby)).to be_truthy
   end
 
   describe '#to_ruby' do
 
     it 'should return evaluable string' do
-      model = ClinVar::XSD.open(xsd_sample) do |xsd|
+      to_ruby = ClinVar::XSD.open(xsd_sample) do |xsd|
         xsd.to_ruby
       end
 
-      expect{ eval(model) }.to_not raise_error
+      expect(to_ruby).kind_of? String
     end
 
   end
