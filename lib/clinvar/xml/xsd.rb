@@ -23,15 +23,15 @@ module ClinVar
       def to_ruby
         WSDL::SOAP::ClassDefCreator.new(@xsd, WSDL::SOAP::ClassNameCreator.new, @module_path).dump
       end
-    end
-  end
-end
 
-module ClassDefCreatorImprove
-  def create_complextypedef(mpath, qname, type, qualified = false)
-    c = super
-    unless c.nil?
-      c.include_module('ModelHelper')
+      module ClassDefCreatorImprove
+        def create_complextypedef(mpath, qname, type, qualified = false)
+          c = super
+          unless c.nil?
+            c.include_module('ModelHelper')
+          end
+        end
+      end
     end
   end
 end
@@ -39,7 +39,7 @@ end
 module WSDL
   module SOAP
     class ClassDefCreator
-      prepend ClassDefCreatorImprove
+      prepend ClinVar::XML::XSD::ClassDefCreatorImprove
     end
   end
 end
