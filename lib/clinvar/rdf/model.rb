@@ -10,6 +10,8 @@ class TypeComment < ::String
   AttrDataSource = XSD::QName.new(nil, "DataSource")
   AttrType = XSD::QName.new(nil, "Type")
 
+  include ModelHelper
+
   def __xmlattr
     @__xmlattr ||= {}
   end
@@ -45,6 +47,8 @@ end
 class TypeHGVSExpression
   AttrAssembly = XSD::QName.new(nil, "Assembly")
   AttrType = XSD::QName.new(nil, "Type")
+
+  include ModelHelper
 
   attr_accessor :nucleotideExpression
   attr_accessor :proteinExpression
@@ -97,12 +101,16 @@ class TypeHaplotype
   # inner class for member: HGVSlist
   # {}HGVSlist
   class HGVSlist < ::Array
+    include ModelHelper
   end
 
   # inner class for member: XRefList
   # {}XRefList
   class XRefList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :simpleAllele
   attr_accessor :name
@@ -167,12 +175,16 @@ class TypeHaplotypeSCV
   # inner class for member: XRefList
   # {}XRefList
   class XRefList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: CitationList
   # {}CitationList
   class CitationList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :simpleAllele
   attr_accessor :name
@@ -225,6 +237,8 @@ class TypeAttribute < ::String
   AttrDateValue = XSD::QName.new(nil, "dateValue")
   AttrIntegerValue = XSD::QName.new(nil, "integerValue")
 
+  include ModelHelper
+
   def __xmlattr
     @__xmlattr ||= {}
   end
@@ -257,6 +271,8 @@ end
 #   zygosity - ClinVar::RDF::Model::TypeZygosity
 #   clinicalSignificance - ClinVar::RDF::Model::ClinicalSignificanceType
 class TypeAlleleDescr
+  include ModelHelper
+
   attr_accessor :name
   attr_accessor :relativeOrientation
   attr_accessor :zygosity
@@ -324,6 +340,8 @@ class TypeLocation
     AttrStop = XSD::QName.new(nil, "stop")
     AttrStrand = XSD::QName.new(nil, "Strand")
     AttrVariantLength = XSD::QName.new(nil, "variantLength")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -510,6 +528,8 @@ class TypeLocation
     end
   end
 
+  include ModelHelper
+
   attr_accessor :cytogeneticLocation
   attr_accessor :sequenceLocation
   attr_accessor :geneLocation
@@ -580,6 +600,8 @@ class TypeAllele
         AttrClinGen = XSD::QName.new(nil, "ClinGen")
         AttrLast_evaluated = XSD::QName.new(nil, "last_evaluated")
 
+        include ModelHelper
+
         def __xmlattr
           @__xmlattr ||= {}
         end
@@ -614,6 +636,8 @@ class TypeAllele
         AttrClinGen = XSD::QName.new(nil, "ClinGen")
         AttrLast_evaluated = XSD::QName.new(nil, "last_evaluated")
 
+        include ModelHelper
+
         def __xmlattr
           @__xmlattr ||= {}
         end
@@ -639,6 +663,8 @@ class TypeAllele
           @__xmlattr = {}
         end
       end
+
+      include ModelHelper
 
       attr_accessor :location
       attr_accessor :oMIM
@@ -708,6 +734,8 @@ class TypeAllele
       end
     end
 
+    include ModelHelper
+
     attr_accessor :gene
 
     def __xmlattr
@@ -731,11 +759,13 @@ class TypeAllele
   # inner class for member: HGVSlist
   # {}HGVSlist
   class HGVSlist < ::Array
+    include ModelHelper
   end
 
   # inner class for member: XRefList
   # {}XRefList
   class XRefList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: AlleleFrequencyList
@@ -752,6 +782,8 @@ class TypeAllele
       AttrType = XSD::QName.new(nil, "Type")
       AttrURL = XSD::QName.new(nil, "URL")
       AttrValue = XSD::QName.new(nil, "Value")
+
+      include ModelHelper
 
       def __xmlattr
         @__xmlattr ||= {}
@@ -793,6 +825,8 @@ class TypeAllele
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
   end
 
   # inner class for member: GlobalMinorAlleleFrequency
@@ -806,6 +840,8 @@ class TypeAllele
     AttrType = XSD::QName.new(nil, "Type")
     AttrURL = XSD::QName.new(nil, "URL")
     AttrValue = XSD::QName.new(nil, "Value")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -858,6 +894,8 @@ class TypeAllele
     class Suspect
       AttrValue = XSD::QName.new(nil, "Value")
 
+      include ModelHelper
+
       attr_accessor :xRef
 
       def __xmlattr
@@ -877,7 +915,11 @@ class TypeAllele
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :geneList
   attr_accessor :name
@@ -964,6 +1006,8 @@ class TypeAlleleSCV
       AttrC_Symbol = XSD::QName.new(nil, "Symbol")
       AttrRelationshipType = XSD::QName.new(nil, "RelationshipType")
 
+      include ModelHelper
+
       attr_accessor :name
       attr_accessor :property
       attr_accessor :xRef
@@ -995,6 +1039,8 @@ class TypeAlleleSCV
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
   end
 
   # inner class for member: Name
@@ -1002,6 +1048,8 @@ class TypeAlleleSCV
   #   xmlattr_Type - SOAP::SOAPString
   class Name < ::String
     AttrType = XSD::QName.new(nil, "Type")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -1024,11 +1072,13 @@ class TypeAlleleSCV
   # inner class for member: XRefList
   # {}XRefList
   class XRefList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: CitationList
   # {}CitationList
   class CitationList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: MolecularConsequenceList
@@ -1048,6 +1098,8 @@ class TypeAlleleSCV
       AttrHGVS = XSD::QName.new(nil, "HGVS")
       AttrRS = XSD::QName.new(nil, "RS")
       AttrSOid = XSD::QName.new(nil, "SOid")
+
+      include ModelHelper
 
       attr_accessor :xRef
       attr_accessor :citation
@@ -1096,7 +1148,11 @@ class TypeAlleleSCV
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :geneList
   attr_accessor :name
@@ -1160,6 +1216,7 @@ class TypeGenotype
   # inner class for member: HGVSlist
   # {}HGVSlist
   class HGVSlist < ::Array
+    include ModelHelper
   end
 
   # inner class for member: FunctionalConsequence
@@ -1170,6 +1227,8 @@ class TypeGenotype
   #   xmlattr_Value - SOAP::SOAPString
   class FunctionalConsequence
     AttrValue = XSD::QName.new(nil, "Value")
+
+    include ModelHelper
 
     attr_accessor :xRef
     attr_accessor :citation
@@ -1198,12 +1257,16 @@ class TypeGenotype
   # inner class for member: XRefList
   # {}XRefList
   class XRefList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: CitationList
   # {}CitationList
   class CitationList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :simpleAllele
   attr_accessor :haplotype
@@ -1259,6 +1322,8 @@ class TypeXref
   AttrStatus = XSD::QName.new(nil, "Status")
   AttrType = XSD::QName.new(nil, "Type")
   AttrURL = XSD::QName.new(nil, "URL")
+
+  include ModelHelper
 
   def __xmlattr
     @__xmlattr ||= {}
@@ -1322,6 +1387,8 @@ class SubmitterType
   AttrSubmitterName = XSD::QName.new(nil, "SubmitterName")
   AttrType = XSD::QName.new(nil, "Type")
 
+  include ModelHelper
+
   def __xmlattr
     @__xmlattr ||= {}
   end
@@ -1379,6 +1446,8 @@ class TypeNames < ::Array
   class Name < ::String
     AttrType = XSD::QName.new(nil, "Type")
 
+    include ModelHelper
+
     def __xmlattr
       @__xmlattr ||= {}
     end
@@ -1396,6 +1465,8 @@ class TypeNames < ::Array
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 end
 
 # {}typeEvidenceObservation
@@ -1440,7 +1511,10 @@ class TypeEvidenceObservation
   # inner class for member: CitationList
   # {}CitationList
   class CitationList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :method
   attr_accessor :modeOfInheritance
@@ -1600,6 +1674,8 @@ class TypeCitation
   class ID < ::String
     AttrSource = XSD::QName.new(nil, "Source")
 
+    include ModelHelper
+
     def __xmlattr
       @__xmlattr ||= {}
     end
@@ -1617,6 +1693,8 @@ class TypeCitation
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :iD
   attr_accessor :uRL
@@ -1667,6 +1745,8 @@ class TypeNucleotideSequenceExpression
   AttrSequenceType = XSD::QName.new(nil, "sequenceType")
   AttrSequenceVersion = XSD::QName.new(nil, "sequenceVersion")
   AttrSubmitted = XSD::QName.new(nil, "Submitted")
+
+  include ModelHelper
 
   attr_accessor :expression
 
@@ -1748,6 +1828,8 @@ class TypeProteinSequenceExpression
   AttrSequenceAccessionVersion = XSD::QName.new(nil, "sequenceAccessionVersion")
   AttrSequenceVersion = XSD::QName.new(nil, "sequenceVersion")
 
+  include ModelHelper
+
   attr_accessor :expression
 
   def __xmlattr
@@ -1813,7 +1895,10 @@ class PhenotypeListDetailsType
     # inner class for member: XRefList
     # {}XRefList
     class XRefList < ::Array
+      include ModelHelper
     end
+
+    include ModelHelper
 
     attr_accessor :xRefList
 
@@ -1885,7 +1970,10 @@ class PhenotypeListDetailsType
     # inner class for member: XRefList
     # {}XRefList
     class XRefList < ::Array
+      include ModelHelper
     end
+
+    include ModelHelper
 
     attr_accessor :xRefList
 
@@ -2003,6 +2091,8 @@ class PhenotypeListDetailsType
     end
   end
 
+  include ModelHelper
+
   attr_accessor :phenotype
   attr_accessor :phenotypeDetails
 
@@ -2043,7 +2133,10 @@ class IndicationListType
     # inner class for member: XRefList
     # {}XRefList
     class XRefList < ::Array
+      include ModelHelper
     end
+
+    include ModelHelper
 
     attr_accessor :xRefList
 
@@ -2072,6 +2165,8 @@ class IndicationListType
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :indication
 
@@ -2108,7 +2203,10 @@ class PharmaType < ::Array
     # inner class for member: XRefList
     # {}XRefList
     class XRefList < ::Array
+      include ModelHelper
     end
+
+    include ModelHelper
 
     attr_accessor :phenotypeList
     attr_accessor :xRefList
@@ -2139,12 +2237,16 @@ class PharmaType < ::Array
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 end
 
 # {}typeMethodRefs
 #   methodName - SOAP::SOAPString
 #   xRef - ClinVar::RDF::Model::TypeXref
 class TypeMethodRefs
+  include ModelHelper
+
   attr_accessor :methodName
   attr_accessor :xRef
 
@@ -2184,6 +2286,8 @@ class TypeSample
   #   description - ClinVar::RDF::Model::TypeComment
   #   citation - ClinVar::RDF::Model::TypeCitation
   class SampleDescription
+    include ModelHelper
+
     attr_accessor :description
     attr_accessor :citation
 
@@ -2198,6 +2302,8 @@ class TypeSample
   #   xmlattr_TaxonomyId - SOAP::SOAPInt
   class Species < ::String
     AttrTaxonomyId = XSD::QName.new(nil, "TaxonomyId")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -2225,6 +2331,8 @@ class TypeSample
     AttrAge_unit = XSD::QName.new(nil, "age_unit")
     AttrType = XSD::QName.new(nil, "Type")
 
+    include ModelHelper
+
     def __xmlattr
       @__xmlattr ||= {}
     end
@@ -2250,6 +2358,8 @@ class TypeSample
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :sampleDescription
   attr_accessor :origin
@@ -2314,6 +2424,8 @@ class FamilyInfo
   AttrPedigreeID = XSD::QName.new(nil, "PedigreeID")
   AttrSegregationObserved = XSD::QName.new(nil, "SegregationObserved")
 
+  include ModelHelper
+
   attr_accessor :familyHistory
 
   def __xmlattr
@@ -2375,6 +2487,8 @@ class TypeSoftwareSet
   AttrPurpose = XSD::QName.new(nil, "purpose")
   AttrVersion = XSD::QName.new(nil, "version")
 
+  include ModelHelper
+
   def __xmlattr
     @__xmlattr ||= {}
   end
@@ -2421,6 +2535,8 @@ class TypeSingleInterpretation
   AttrAlleleOrigin = XSD::QName.new(nil, "AlleleOrigin")
   AttrDateLastEvaluated = XSD::QName.new(nil, "DateLastEvaluated")
   AttrType = XSD::QName.new(nil, "Type")
+
+  include ModelHelper
 
   attr_accessor :description
   attr_accessor :explanation
@@ -2489,7 +2605,10 @@ class TypeAggregatedInterpretation < TypeSingleInterpretation
   # inner class for member: ConditionList
   # {}ConditionList
   class ConditionList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :description
   attr_accessor :explanation
@@ -2557,6 +2676,7 @@ end
 
 # {}typeAggregatedInterpretationSet
 class TypeAggregatedInterpretationSet < ::Array
+  include ModelHelper
 end
 
 # {}typeDescriptionHistory
@@ -2564,6 +2684,8 @@ end
 #   xmlattr_Dated - SOAP::SOAPDate
 class TypeDescriptionHistory
   AttrDated = XSD::QName.new(nil, "Dated")
+
+  include ModelHelper
 
   attr_accessor :description
 
@@ -2607,12 +2729,16 @@ class TypeRCV
   # inner class for member: InterpretedConditionList
   # {}InterpretedConditionList
   class InterpretedConditionList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: ReplacedList
   # {}ReplacedList
   class ReplacedList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :interpretedConditionList
   attr_accessor :replacedList
@@ -2693,6 +2819,8 @@ class TypeSCV
   AttrTitle = XSD::QName.new(nil, "Title")
   AttrVersion = XSD::QName.new(nil, "Version")
 
+  include ModelHelper
+
   def __xmlattr
     @__xmlattr ||= {}
   end
@@ -2733,6 +2861,8 @@ end
 #   xmlattr_Value - SOAP::SOAPString
 class TypeFunctionalConsequence
   AttrValue = XSD::QName.new(nil, "Value")
+
+  include ModelHelper
 
   attr_accessor :xRef
   attr_accessor :citation
@@ -2791,6 +2921,7 @@ class VariationArchiveType
   # inner class for member: ReplacedList
   # {}ReplacedList
   class ReplacedList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: Species
@@ -2798,6 +2929,8 @@ class VariationArchiveType
   #   xmlattr_TaxonomyId - SOAP::SOAPInt
   class Species < ::String
     AttrTaxonomyId = XSD::QName.new(nil, "TaxonomyId")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -2816,6 +2949,8 @@ class VariationArchiveType
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :recordStatus
   attr_accessor :replacedBy
@@ -2927,6 +3062,8 @@ end
 class ReleaseType
   AttrReleaseDate = XSD::QName.new(nil, "ReleaseDate")
 
+  include ModelHelper
+
   attr_accessor :variationArchive
 
   def __xmlattr
@@ -2952,6 +3089,8 @@ end
 #   alleleDescSet - ClinVar::RDF::Model::TypeAlleleDescr
 #   count - SOAP::SOAPInt
 class CoOccurrenceType
+  include ModelHelper
+
   attr_accessor :zygosity
   attr_accessor :alleleDescSet
   attr_accessor :count
@@ -2975,6 +3114,8 @@ class TypeDeletedSCV
   class Accession < ::String
     AttrDateDeleted = XSD::QName.new(nil, "DateDeleted")
     AttrVersion = XSD::QName.new(nil, "Version")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -3001,6 +3142,8 @@ class TypeDeletedSCV
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :accession
   attr_accessor :description
@@ -3054,6 +3197,8 @@ class MeasureTraitType
     AttrLocalKeyIsSubmitted = XSD::QName.new(nil, "localKeyIsSubmitted")
     AttrSubmittedAssembly = XSD::QName.new(nil, "submittedAssembly")
     AttrTitle = XSD::QName.new(nil, "title")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -3115,6 +3260,8 @@ class MeasureTraitType
     AttrSubmitterName = XSD::QName.new(nil, "SubmitterName")
     AttrType = XSD::QName.new(nil, "Type")
     AttrVersion = XSD::QName.new(nil, "Version")
+
+    include ModelHelper
 
     def __xmlattr
       @__xmlattr ||= {}
@@ -3192,11 +3339,13 @@ class MeasureTraitType
   # inner class for member: AdditionalSubmitters
   # {}AdditionalSubmitters
   class AdditionalSubmitters < ::Array
+    include ModelHelper
   end
 
   # inner class for member: ReplacedList
   # {}ReplacedList
   class ReplacedList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: CustomAssertionScore
@@ -3208,6 +3357,8 @@ class MeasureTraitType
   class CustomAssertionScore
     AttrType = XSD::QName.new(nil, "Type")
     AttrValue = XSD::QName.new(nil, "Value")
+
+    include ModelHelper
 
     attr_accessor :citation
     attr_accessor :xRef
@@ -3253,6 +3404,8 @@ class MeasureTraitType
     class Attribute < ::String
       AttrType = XSD::QName.new(nil, "Type")
 
+      include ModelHelper
+
       def __xmlattr
         @__xmlattr ||= {}
       end
@@ -3271,6 +3424,8 @@ class MeasureTraitType
       end
     end
 
+    include ModelHelper
+
     attr_accessor :attribute
     attr_accessor :citation
     attr_accessor :xRef
@@ -3287,12 +3442,16 @@ class MeasureTraitType
   # inner class for member: ObservedInList
   # {}ObservedInList
   class ObservedInList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: SubmissionNameList
   # {}SubmissionNameList
   class SubmissionNameList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :clinVarSubmissionID
   attr_accessor :clinVarAccession
@@ -3407,6 +3566,8 @@ class MethodType
     class Attribute < ::String
       AttrType = XSD::QName.new(nil, "Type")
 
+      include ModelHelper
+
       def __xmlattr
         @__xmlattr ||= {}
       end
@@ -3424,6 +3585,8 @@ class MethodType
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
 
     attr_accessor :attribute
 
@@ -3444,6 +3607,8 @@ class MethodType
     class Attribute < ::String
       AttrType = XSD::QName.new(nil, "Type")
 
+      include ModelHelper
+
       def __xmlattr
         @__xmlattr ||= {}
       end
@@ -3462,6 +3627,8 @@ class MethodType
       end
     end
 
+    include ModelHelper
+
     attr_accessor :attribute
     attr_accessor :comment
 
@@ -3470,6 +3637,8 @@ class MethodType
       @comment = comment
     end
   end
+
+  include ModelHelper
 
   attr_accessor :namePlatform
   attr_accessor :typePlatform
@@ -3548,6 +3717,8 @@ class ObservationSet
       class Attribute < ::String
         AttrType = XSD::QName.new(nil, "Type")
 
+        include ModelHelper
+
         def __xmlattr
           @__xmlattr ||= {}
         end
@@ -3565,6 +3736,8 @@ class ObservationSet
           @__xmlattr = {}
         end
       end
+
+      include ModelHelper
 
       attr_accessor :attribute
 
@@ -3585,6 +3758,8 @@ class ObservationSet
       class Attribute < ::String
         AttrType = XSD::QName.new(nil, "Type")
 
+        include ModelHelper
+
         def __xmlattr
           @__xmlattr ||= {}
         end
@@ -3603,6 +3778,8 @@ class ObservationSet
         end
       end
 
+      include ModelHelper
+
       attr_accessor :attribute
       attr_accessor :comment
 
@@ -3611,6 +3788,8 @@ class ObservationSet
         @comment = comment
       end
     end
+
+    include ModelHelper
 
     attr_accessor :namePlatform
     attr_accessor :typePlatform
@@ -3664,6 +3843,8 @@ class ObservationSet
     class Attribute < ::String
       AttrType = XSD::QName.new(nil, "Type")
 
+      include ModelHelper
+
       def __xmlattr
         @__xmlattr ||= {}
       end
@@ -3682,6 +3863,8 @@ class ObservationSet
       end
     end
 
+    include ModelHelper
+
     attr_accessor :attribute
     attr_accessor :severity
     attr_accessor :citation
@@ -3696,6 +3879,8 @@ class ObservationSet
       @comment = comment
     end
   end
+
+  include ModelHelper
 
   attr_accessor :sample
   attr_accessor :method
@@ -3748,6 +3933,8 @@ class ClinAsserTraitSetType
     class Attribute < ::String
       AttrType = XSD::QName.new(nil, "Type")
 
+      include ModelHelper
+
       def __xmlattr
         @__xmlattr ||= {}
       end
@@ -3766,6 +3953,8 @@ class ClinAsserTraitSetType
       end
     end
 
+    include ModelHelper
+
     attr_accessor :attribute
     attr_accessor :citation
     attr_accessor :xRef
@@ -3778,6 +3967,8 @@ class ClinAsserTraitSetType
       @comment = comment
     end
   end
+
+  include ModelHelper
 
   attr_accessor :trait
   attr_accessor :name
@@ -3856,6 +4047,8 @@ class ClinAsserTraitType
     class Attribute < ::String
       AttrType = XSD::QName.new(nil, "Type")
 
+      include ModelHelper
+
       def __xmlattr
         @__xmlattr ||= {}
       end
@@ -3873,6 +4066,8 @@ class ClinAsserTraitType
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
 
     attr_accessor :attribute
     attr_accessor :citation
@@ -3913,6 +4108,8 @@ class ClinAsserTraitType
       class Attribute < ::String
         AttrType = XSD::QName.new(nil, "Type")
 
+        include ModelHelper
+
         def __xmlattr
           @__xmlattr ||= {}
         end
@@ -3931,6 +4128,8 @@ class ClinAsserTraitType
         end
       end
 
+      include ModelHelper
+
       attr_accessor :attribute
       attr_accessor :citation
       attr_accessor :xRef
@@ -3943,6 +4142,8 @@ class ClinAsserTraitType
         @comment = comment
       end
     end
+
+    include ModelHelper
 
     attr_accessor :name
     attr_accessor :symbol
@@ -3973,6 +4174,8 @@ class ClinAsserTraitType
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :name
   attr_accessor :symbol
@@ -4029,6 +4232,8 @@ class SetElementSetType
   class ElementValue < ::String
     AttrType = XSD::QName.new(nil, "Type")
 
+    include ModelHelper
+
     def __xmlattr
       @__xmlattr ||= {}
     end
@@ -4046,6 +4251,8 @@ class SetElementSetType
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :elementValue
   attr_accessor :citation
@@ -4073,6 +4280,8 @@ class TypeAttributeSet
   class Attribute < ::String
     AttrType = XSD::QName.new(nil, "Type")
 
+    include ModelHelper
+
     def __xmlattr
       @__xmlattr ||= {}
     end
@@ -4090,6 +4299,8 @@ class TypeAttributeSet
       @__xmlattr = {}
     end
   end
+
+  include ModelHelper
 
   attr_accessor :attribute
   attr_accessor :citation
@@ -4117,6 +4328,8 @@ end
 class IndicationType
   AttrID = XSD::QName.new(nil, "ID")
   AttrType = XSD::QName.new(nil, "Type")
+
+  include ModelHelper
 
   attr_accessor :trait
   attr_accessor :name
@@ -4169,6 +4382,8 @@ end
 class ClinicalSignificanceType
   AttrDateLastEvaluated = XSD::QName.new(nil, "DateLastEvaluated")
 
+  include ModelHelper
+
   attr_accessor :reviewStatus
   attr_accessor :description
   attr_accessor :explanation
@@ -4210,6 +4425,8 @@ class TypeRecordHistory
   AttrDateChanged = XSD::QName.new(nil, "DateChanged")
   AttrVariationID = XSD::QName.new(nil, "VariationID")
   AttrVersion = XSD::QName.new(nil, "Version")
+
+  include ModelHelper
 
   attr_accessor :comment
 
@@ -4279,6 +4496,8 @@ class TypeGenotypeSCV
   class FunctionalConsequence
     AttrValue = XSD::QName.new(nil, "Value")
 
+    include ModelHelper
+
     attr_accessor :xRef
     attr_accessor :citation
     attr_accessor :comment
@@ -4306,12 +4525,16 @@ class TypeGenotypeSCV
   # inner class for member: XRefList
   # {}XRefList
   class XRefList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: CitationList
   # {}CitationList
   class CitationList < ::Array
+    include ModelHelper
   end
+
+  include ModelHelper
 
   attr_accessor :simpleAllele
   attr_accessor :haplotype
@@ -4357,6 +4580,8 @@ end
 class TypeRCVInterpretedCondition < ::String
   AttrDB = XSD::QName.new(nil, "DB")
   AttrID = XSD::QName.new(nil, "ID")
+
+  include ModelHelper
 
   def __xmlattr
     @__xmlattr ||= {}
@@ -4607,6 +4832,8 @@ class InterpretedRecord
     AttrIndependentObservations = XSD::QName.new(nil, "IndependentObservations")
     AttrSubmissionCount = XSD::QName.new(nil, "SubmissionCount")
 
+    include ModelHelper
+
     attr_accessor :rCVAccession
 
     def __xmlattr
@@ -4638,6 +4865,7 @@ class InterpretedRecord
   # inner class for member: ClinicalAssertionList
   # {}ClinicalAssertionList
   class ClinicalAssertionList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: TraitMappingList
@@ -4666,6 +4894,8 @@ class InterpretedRecord
         AttrCUI = XSD::QName.new(nil, "CUI")
         AttrName = XSD::QName.new(nil, "Name")
 
+        include ModelHelper
+
         def __xmlattr
           @__xmlattr ||= {}
         end
@@ -4690,6 +4920,8 @@ class InterpretedRecord
           @__xmlattr = {}
         end
       end
+
+      include ModelHelper
 
       attr_accessor :medGen
 
@@ -4742,11 +4974,14 @@ class InterpretedRecord
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
   end
 
   # inner class for member: DeletedSCVList
   # {}DeletedSCVList
   class DeletedSCVList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: GeneralCitations
@@ -4754,6 +4989,8 @@ class InterpretedRecord
   #   citation - ClinVar::RDF::Model::TypeCitation
   #   xRef - ClinVar::RDF::Model::TypeXref
   class GeneralCitations
+    include ModelHelper
+
     attr_accessor :citation
     attr_accessor :xRef
 
@@ -4762,6 +4999,8 @@ class InterpretedRecord
       @xRef = xRef
     end
   end
+
+  include ModelHelper
 
   attr_accessor :simpleAllele
   attr_accessor :haplotype
@@ -4799,6 +5038,7 @@ class IncludedRecord
   # inner class for member: SubmittedInterpretationList
   # {}SubmittedInterpretationList
   class SubmittedInterpretationList < ::Array
+    include ModelHelper
   end
 
   # inner class for member: InterpretedVariationList
@@ -4813,6 +5053,8 @@ class IncludedRecord
       AttrAccession = XSD::QName.new(nil, "Accession")
       AttrVariationID = XSD::QName.new(nil, "VariationID")
       AttrVersion = XSD::QName.new(nil, "Version")
+
+      include ModelHelper
 
       def __xmlattr
         @__xmlattr ||= {}
@@ -4846,6 +5088,8 @@ class IncludedRecord
         @__xmlattr = {}
       end
     end
+
+    include ModelHelper
   end
 
   # inner class for member: GeneralCitations
@@ -4853,6 +5097,8 @@ class IncludedRecord
   #   citation - ClinVar::RDF::Model::TypeCitation
   #   xRef - ClinVar::RDF::Model::TypeXref
   class GeneralCitations
+    include ModelHelper
+
     attr_accessor :citation
     attr_accessor :xRef
 
@@ -4861,6 +5107,8 @@ class IncludedRecord
       @xRef = xRef
     end
   end
+
+  include ModelHelper
 
   attr_accessor :simpleAllele
   attr_accessor :haplotype
