@@ -17,7 +17,7 @@ module ClinVar
 
       def initialize(xsd, **options)
         @module_path = options.delete(:module_path) || %w[ClinVar RDF Model]
-        @xsd = xsd
+        @xsd         = xsd
       end
 
       def to_ruby
@@ -27,3 +27,30 @@ module ClinVar
   end
 end
 
+module ClassDefCreatorImprove
+  def create_complextypedef(mpath, qname, type, qualified = false)
+    c = super
+    unless c.nil?
+      c.include_module('ModelHelper')
+    end
+  end
+end
+
+module WSDL
+  module SOAP
+    class ClassDefCreator
+      prepend ClassDefCreatorImprove
+    end
+  end
+end
+
+module XSD
+  module CodeGen
+    class ClassDef
+      def include_module(module_name)
+        def_code("include #{module_name}")
+        self
+      end
+    end
+  end
+end
