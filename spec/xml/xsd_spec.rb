@@ -11,7 +11,7 @@ RSpec.describe ClinVar::XML::XSD do
   describe '.open' do
 
     it 'should return an instance of self' do
-      expect(ClinVar::XML::XSD.open(xsd_sample)).kind_of? ClinVar::XML::XSD
+      expect(ClinVar::XML::XSD.open(xsd_sample)).to be_kind_of(ClinVar::XML::XSD)
     end
 
     context 'if block given' do
@@ -39,7 +39,7 @@ RSpec.describe ClinVar::XML::XSD do
         xsd.to_ruby
       end
 
-      expect(to_ruby).kind_of? String
+      expect(to_ruby).to be_kind_of(String)
     end
 
   end
