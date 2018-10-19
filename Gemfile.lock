@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    clinvar (0.1.0)
+    clinvar-rdf (0.1.0)
       activemodel (~> 5.2, >= 5.2.1)
       activesupport (~> 5.2, >= 5.2.1)
       logger-application
@@ -90,7 +90,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   bundler (~> 1.16)
-  clinvar!
+  clinvar-rdf!
   pry
   rake (~> 10.0)
   rspec (~> 3.0)

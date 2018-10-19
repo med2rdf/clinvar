@@ -1,5 +1,5 @@
 require 'bundler/setup'
-require 'clinvar'
+require 'clinvar/rdf'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

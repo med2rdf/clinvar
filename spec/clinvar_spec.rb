@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-RSpec.describe Clinvar do
+RSpec.describe ClinVar::RDF do
   it 'has a version number' do
-    expect(Clinvar::VERSION).not_to be nil
+    expect(ClinVar::RDF::VERSION).not_to be nil
   end
 end

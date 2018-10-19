@@ -1,10 +1,10 @@
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'clinvar/version'
+require 'clinvar/rdf/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = 'clinvar'
-  spec.version       = Clinvar::VERSION
+  spec.name          = 'clinvar-rdf'
+  spec.version       = ClinVar::RDF::VERSION
   spec.authors       = ['Daisuke Satoh']
   spec.email         = ['med2rdf@googlegroups.com']
 
