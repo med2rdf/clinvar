@@ -28,4 +28,20 @@ RSpec.describe ClinVar::XSD do
 
   end
 
+  it 'should respond to #to_ruby' do
+    expect(ClinVar::XSD.new.respond_to?(:to_ruby)).to be_truthy
+  end
+
+  describe '#to_ruby' do
+
+    it 'should return evaluable string' do
+      model = ClinVar::XSD.open(xsd_sample) do |xsd|
+        xsd.to_ruby
+      end
+
+      expect{ eval(model) }.to_not raise_error
+    end
+
+  end
+
 end
