@@ -1,9 +1,20 @@
 require 'wsdl/xmlSchema/xsd2ruby'
 
+# Namespace for ClinVar
 module ClinVar
+  # Namespace for ClinVar::XML
   module XML
+    # Class for handling ClinVar XSD
+    #
+    # @author Daisuke Satoh
+    # @attr [Array<String>] module_path accessor for module_path
     class XSD
       class << self
+        # @param [String] path path to xsd
+        # @return [ClinVar::XML::XSD, Object] an instance of ClinVar::XML::XSD or last evaluated value if block given
+        # @yield [xsd] yield instance of ClinVar::XML::XSD
+        # @yieldparam [ClinVar::XML::XSD] xsd the instance of the xsd
+        # @yieldreturn [Object] last evaluated expression in the block
         def open(path)
           xsd = new(WSDL::XMLSchema::Importer.import(path))
 
@@ -20,10 +31,15 @@ module ClinVar
         @xsd         = xsd
       end
 
+      # Convert XSD definitions into ruby classes
+      # @return [String] class definitions
       def to_ruby
         WSDL::SOAP::ClassDefCreator.new(@xsd, WSDL::SOAP::ClassNameCreator.new, @module_path).dump
       end
 
+      # Module for prepending to WSDL::SOAP::ClassDefCreator
+      #
+      # @author Daisuke Satoh
       module ClassDefCreatorImprove
         def create_complextypedef(mpath, qname, type, qualified = false)
           c = super
