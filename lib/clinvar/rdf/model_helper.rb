@@ -1,3 +1,5 @@
+require 'rdf'
+
 module ClinVar
   module RDF
     module ModelHelper
@@ -12,7 +14,7 @@ module ClinVar
       end
 
       def to_rdf
-
+        ::RDF::Graph.new
       end
     end
   end
