@@ -43,6 +43,50 @@ module ClinVar
       #
       # @author Daisuke Satoh
       module ClassDefCreatorImprove
+        def dump(type = nil)
+          result = "require 'xsd/qname'\n"
+
+          modules = modulepath_split(@modulepath)
+
+          modules.each.with_index do |m, i|
+            result << "module #{m}\n".indent(i * 2)
+          end
+
+          str = dump_group(type).indent(modules.length * 2)
+          unless str.empty?
+            result << "\n" unless result.empty?
+            result << str.indent(modules.length * 2)
+          end
+          str = dump_complextype(type)
+          unless str.empty?
+            result << "\n" unless result.empty?
+            result << str.indent(modules.length * 2)
+          end
+          str = dump_simpletype(type)
+          unless str.empty?
+            result << "\n" unless result.empty?
+            result << str.indent(modules.length * 2)
+          end
+          str = dump_element(type)
+          unless str.empty?
+            result << "\n" unless result.empty?
+            result << str.indent(modules.length * 2)
+          end
+          str = dump_attribute(type)
+          unless str.empty?
+            result << "\n" unless result.empty?
+            result << str.indent(modules.length * 2)
+          end
+
+          modules.length.times.reverse_each do |i|
+            result << "end\n".indent(i * 2)
+          end
+
+          result.gsub!(/def initialize$/, 'def initialize(*args)')
+
+          result
+        end
+
         def create_complextypedef(mpath, qname, type, qualified = false)
           c = super
           unless c.nil?
