@@ -64,6 +64,31 @@ end
 
 module XSD
   module CodeGen
+    module GenSupport
+      def safemethodname(name)
+        name = name.to_s.underscore
+        postfix = name[/[=?!]$/]
+        safename = name.scan(/[a-zA-Z0-9_]+/).join('_')
+        safename = uncapitalize(safename)
+        safename += postfix if postfix
+        if /\A[a-z]/ !~ safename or keyword?(safename)
+          "m_#{safename}"
+        else
+          safename
+        end
+      end
+
+      def safevarname(name)
+        name = name.underscore
+        safename = uncapitalize(name.scan(/[a-zA-Z0-9_]+/).join('_'))
+        if /\A[a-z]/ !~ safename or keyword?(safename)
+          "v_#{safename}"
+        else
+          safename
+        end
+      end
+    end
+
     class ClassDef
       def attributes
         @attrdef.collect { |x| x[0] }.compact
