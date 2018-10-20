@@ -56,6 +56,65 @@ module ClinVar
             c.append_type_info(simpletype)
           end
         end
+
+        def create_simpleclassdef(mpath, qname, type_or_element)
+          c = super
+          define_attr_mapping(c, mpath, qname, type_or_element)
+          define_element_mapping(c, mpath, qname, type_or_element)
+        end
+
+        def create_structdef(mpath, qname, typedef, qualified = false)
+          c = super
+          define_attr_mapping(c, mpath, qname, typedef)
+          define_element_mapping(c, mpath, qname, typedef)
+        end
+
+        def define_attr_mapping(class_def, mpath, qname, type_or_element)
+          class_def.def_method('attribute_mapping') do
+            code = []
+            code << '@__attribute_mapping__ ||= {'
+            code << type_or_element.attributes.map do |attribute|
+              "#{name_attribute(attribute).name}: #{attribute_basetype(attribute) || String}".indent(2)
+            end.join(",\n")
+            code << '}'
+          end
+          class_def
+        end
+
+        def define_element_mapping(class_def, mpath, qname, type_or_element)
+          parentmodule = mapped_class_name(qname, mpath)
+          class_def.def_method('element_mapping') do
+            code = []
+            code << '@__element_mapping__ ||= {'
+            code << collect_attribute_type(type_or_element.elements, parentmodule).map do |name, type|
+              "#{safevarname(name)}: #{type}".indent(2)
+            end.join(",\n")
+            code << '}'
+          end
+          class_def
+        end
+
+        def collect_attribute_type(elements, mpath)
+          result = []
+          elements.each do |element|
+            case element
+              # when XMLSchema::Any
+            when WSDL::XMLSchema::Element
+              next if element.ref == WSDL::XMLSchema::SchemaName
+              name     = name_element(element).name
+              typebase = (element.anonymous_type? ? mpath : @modulepath)
+              attrname = safemethodname(name)
+              result << [attrname, create_type_name(typebase, element) || '(any)']
+            when WSDL::XMLSchema::Sequence,
+              WSDL::XMLSchema::Choice,
+              WSDL::XMLSchema::Group
+              result.push(*collect_attribute_type(element.elements, mpath))
+            else
+              raise RuntimeError.new("unknown type: #{element}")
+            end
+          end
+          result
+        end
       end
     end
   end
