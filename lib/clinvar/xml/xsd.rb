@@ -49,6 +49,13 @@ module ClinVar
             c.include_module('ModelHelper')
           end
         end
+
+        def create_simpletypedef(mpath, qname, simpletype, qualified = false)
+          c = super
+          unless c.nil?
+            c.append_type_info(simpletype)
+          end
+        end
       end
     end
   end
