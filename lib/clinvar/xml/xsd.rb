@@ -69,6 +69,17 @@ module ClinVar
           define_element_mapping(c, mpath, qname, typedef)
         end
 
+        def create_arraydef(mpath, qname, typedef)
+          c = super
+
+          parentmodule = mapped_class_name(qname, mpath)
+          type = collect_attribute_type(typedef.elements, parentmodule).first
+
+          c.def_method('self.element_type') { type[1] }
+
+          c
+        end
+
         def define_attr_mapping(class_def, mpath, qname, type_or_element)
           class_def.def_method('attribute_mapping') do
             code = []
