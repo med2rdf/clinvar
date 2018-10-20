@@ -1,0 +1,862 @@
+<VariationArchive Accession="VCV000018390" DateCreated="2010-12-01" DateLastUpdated="2018-06-22" NumberOfSubmissions="5" NumberOfSubmitters="1" RecordType="interpreted" VariationID="18390" VariationName="NM_000690.3(ALDH2):c.1510G&gt;A (p.Glu504Lys)" VariationType="single nucleotide variant" Version="1">
+  <RecordStatus>current</RecordStatus>
+  <Species>Homo sapiens</Species>
+  <InterpretedRecord>
+    <SimpleAllele AlleleID="33429" VariationID="18390">
+      <GeneList>
+        <Gene FullName="aldehyde dehydrogenase 2 family member" GeneID="217" HGNC_ID="HGNC:404" RelationshipType="within single gene" Source="submitted" Symbol="ALDH2">
+          <Location>
+            <CytogeneticLocation>12q24.12</CytogeneticLocation>
+            <SequenceLocation Accession="NC_000012.12" Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.33" AssemblyStatus="current" Chr="12" Strand="+" display_start="111766887" display_stop="111809985" start="111766887" stop="111809985"/>
+            <SequenceLocation Accession="NC_000012.11" Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="12" Strand="+" display_start="112204690" display_stop="112247788" start="112204690" stop="112247788"/>
+          </Location>
+          <OMIM>100650</OMIM>
+        </Gene>
+      </GeneList>
+      <Name>NM_000690.3(ALDH2):c.1510G&gt;A (p.Glu504Lys)</Name>
+      <VariantType>single nucleotide variant</VariantType>
+      <Location>
+        <CytogeneticLocation>12q24.12</CytogeneticLocation>
+        <SequenceLocation Accession="NC_000012.12" Assembly="GRCh38" AssemblyAccessionVersion="GCF_000001405.33" AssemblyStatus="current" Chr="12" alternateAllele="A" alternateAlleleVCF="A" display_start="111803962" display_stop="111803962" forDisplay="true" positionVCF="111803962" referenceAllele="G" referenceAlleleVCF="G" start="111803962" stop="111803962" variantLength="1"/>
+        <SequenceLocation Accession="NC_000012.11" Assembly="GRCh37" AssemblyAccessionVersion="GCF_000001405.25" AssemblyStatus="previous" Chr="12" alternateAllele="A" alternateAlleleVCF="A" display_start="112241766" display_stop="112241766" positionVCF="112241766" referenceAllele="G" referenceAlleleVCF="G" start="112241766" stop="112241766" variantLength="1"/>
+      </Location>
+      <OtherNameList>
+        <Name>ALDH2*2</Name>
+        <Name>ALDH2, GLU504LYS (rs671)</Name>
+        <Name>GLU487LYS</Name>
+      </OtherNameList>
+      <ProteinChange>E504K</ProteinChange>
+      <HGVSlist>
+        <HGVS Assembly="GRCh37" Type="genomic, top-level">
+          <NucleotideExpression Assembly="GRCh37" change="g.112241766G&gt;A" sequenceAccession="NC_000012" sequenceAccessionVersion="NC_000012.11" sequenceVersion="11">
+            <Expression>NC_000012.11:g.112241766G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Assembly="GRCh38" Type="genomic, top-level">
+          <NucleotideExpression Assembly="GRCh38" change="g.111803962G&gt;A" sequenceAccession="NC_000012" sequenceAccessionVersion="NC_000012.12" sequenceVersion="12">
+            <Expression>NC_000012.12:g.111803962G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="coding">
+          <NucleotideExpression change="c.1510G&gt;A" sequenceAccession="NM_000690" sequenceAccessionVersion="NM_000690.3" sequenceVersion="3">
+            <Expression>NM_000690.3:c.1510G&gt;A</Expression>
+          </NucleotideExpression>
+          <ProteinExpression change="p.Glu504Lys" sequenceAccession="NP_000681" sequenceAccessionVersion="NP_000681.2" sequenceVersion="2">
+            <Expression>NP_000681.2:p.Glu504Lys</Expression>
+          </ProteinExpression>
+          <MolecularConsequence DB="SO" ID="SO:0001583" Type="missense variant"/>
+        </HGVS>
+        <HGVS Type="genomic">
+          <NucleotideExpression change="g.42421G&gt;A" sequenceAccession="NG_012250" sequenceAccessionVersion="NG_012250.1" sequenceVersion="1">
+            <Expression>NG_012250.1:g.42421G&gt;A</Expression>
+          </NucleotideExpression>
+        </HGVS>
+        <HGVS Type="protein">
+          <ProteinExpression change="p.Glu504Lys" sequenceAccession="P05091" sequenceAccessionVersion="P05091">
+            <Expression>P05091:p.Glu504Lys</Expression>
+          </ProteinExpression>
+        </HGVS>
+      </HGVSlist>
+      <XRefList>
+        <XRef DB="UniProtKB" ID="P05091#VAR_002248"/>
+        <XRef DB="OMIM" ID="100650.0001" Type="Allelic variant"/>
+        <XRef DB="dbSNP" ID="671" Type="rs"/>
+      </XRefList>
+      <AlleleFrequencyList>
+        <AlleleFrequency MinorAllele="A" Type="ExAC" Value="0.02129"/>
+      </AlleleFrequencyList>
+      <GlobalMinorAlleleFrequency MinorAllele="A" Type="1000GenomesMinorAlleleFrequency" Value="0.0357"/>
+    </SimpleAllele>
+    <ReviewStatus>no assertion criteria provided</ReviewStatus>
+    <RCVList>
+      <RCVAccession Accession="RCV000020058" DateLastEvaluated="2013-04-04" Interpretation="Pathogenic" ReviewStatus="no assertion criteria provided" SubmissionCount="1" Title="NM_000690.3(ALDH2):c.1510G&gt;A (p.Glu504Lys) AND Acute alcohol sensitivity" Version="2">
+        <InterpretedConditionList>
+          <InterpretedCondition DB="MedGen" ID="C2674838">Acute alcohol sensitivity</InterpretedCondition>
+        </InterpretedConditionList>
+      </RCVAccession>
+      <RCVAccession Accession="RCV000020059" DateLastEvaluated="2010-02-01" Interpretation="protective" ReviewStatus="no assertion criteria provided" SubmissionCount="1" Title="NM_000690.3(ALDH2):c.1510G&gt;A (p.Glu504Lys) AND Alcohol dependence" Version="2">
+        <InterpretedConditionList>
+          <InterpretedCondition DB="MedGen" ID="C0001973">Alcohol dependence</InterpretedCondition>
+        </InterpretedConditionList>
+      </RCVAccession>
+      <RCVAccession Accession="RCV000020060" DateLastEvaluated="2010-02-01" Interpretation="risk factor" ReviewStatus="no assertion criteria provided" SubmissionCount="1" Title="NM_000690.3(ALDH2):c.1510G&gt;A (p.Glu504Lys) AND Susceptibility to hangover" Version="2">
+        <InterpretedConditionList>
+          <InterpretedCondition DB="MedGen" ID="C2608086">Susceptibility to hangover</InterpretedCondition>
+        </InterpretedConditionList>
+      </RCVAccession>
+      <RCVAccession Accession="RCV000020061" DateLastEvaluated="2010-02-01" Interpretation="risk factor" ReviewStatus="no assertion criteria provided" SubmissionCount="1" Title="NM_000690.3(ALDH2):c.1510G&gt;A (p.Glu504Lys) AND Sublingual nitroglycerin, susceptibility to poor response to" Version="2">
+        <InterpretedConditionList>
+          <InterpretedCondition DB="MedGen" ID="C2676227">Sublingual nitroglycerin, susceptibility to poor response to</InterpretedCondition>
+        </InterpretedConditionList>
+      </RCVAccession>
+      <RCVAccession Accession="RCV000020062" DateLastEvaluated="2010-02-01" Interpretation="risk factor" ReviewStatus="no assertion criteria provided" SubmissionCount="1" Title="NM_000690.3(ALDH2):c.1510G&gt;A (p.Glu504Lys) AND Esophageal cancer, alcohol-related, susceptibility to" Version="2">
+        <InterpretedConditionList>
+          <InterpretedCondition DB="MedGen" ID="C3149226">Esophageal cancer, alcohol-related, susceptibility to</InterpretedCondition>
+        </InterpretedConditionList>
+      </RCVAccession>
+    </RCVList>
+    <Interpretations>
+      <Interpretation DateLastEvaluated="2013-04-04" NumberOfSubmissions="5" NumberOfSubmitters="1" Type="Clinical significance">
+        <Description>Pathogenic, protective, risk factor</Description>
+        <Citation Type="general">
+          <ID Source="PubMed">10627091</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">10780266</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">15654505</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">16046871</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">16440063</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">17885622</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">18056758</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">20010786</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">2987944</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">4065146</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">6582480</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">7180842</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">7593603</ID>
+        </Citation>
+        <Citation Type="general">
+          <ID Source="PubMed">8903321</ID>
+        </Citation>
+        <ConditionList>
+          <TraitSet ID="6657" Type="Disease">
+            <Trait ID="199" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Acute alcohol sensitivity</ElementValue>
+                <XRef DB="Genetic Alliance" ID="Acute+alcohol+sensitivity/7630"/>
+              </Name>
+              <XRef DB="MedGen" ID="C2674838"/>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="6205" Type="Disease">
+            <Trait ID="13165" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Susceptibility to hangover</ElementValue>
+              </Name>
+              <XRef DB="MedGen" ID="C2608086"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="6206" Type="Disease">
+            <Trait ID="13166" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Sublingual nitroglycerin, susceptibility to poor response to</ElementValue>
+              </Name>
+              <XRef DB="MedGen" ID="C2676227"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="6207" Type="Disease">
+            <Trait ID="13167" Type="Disease">
+              <Name>
+                <ElementValue Type="Preferred">Esophageal cancer, alcohol-related, susceptibility to</ElementValue>
+              </Name>
+              <XRef DB="MedGen" ID="C3149226"/>
+            </Trait>
+          </TraitSet>
+          <TraitSet ID="6082" Type="Disease">
+            <Trait ID="100" Type="Disease">
+              <Name>
+                <ElementValue Type="Alternate">ALCOHOLISM</ElementValue>
+                <XRef DB="OMIM" ID="103780" Type="MIM"/>
+              </Name>
+              <Name>
+                <ElementValue Type="Alternate">ALCOHOL DEPENDENCE, PROTECTION AGAINST</ElementValue>
+                <XRef DB="OMIM" ID="103730.0002" Type="Allelic variant"/>
+                <XRef DB="OMIM" ID="103730.0001" Type="Allelic variant"/>
+                <XRef DB="OMIM" ID="103720.0002" Type="Allelic variant"/>
+                <XRef DB="OMIM" ID="100650.0001" Type="Allelic variant"/>
+                <XRef DB="OMIM" ID="103720.0001" Type="Allelic variant"/>
+                <XRef DB="OMIM" ID="103780"/>
+              </Name>
+              <Name>
+                <ElementValue Type="Preferred">Alcohol dependence</ElementValue>
+                <XRef DB="Genetic Alliance" ID="Alcohol+dependence/7663"/>
+              </Name>
+              <AttributeSet>
+                <Attribute Type="Genetics Home Reference (GHR) links">alcohol use disorder</Attribute>
+                <XRef DB="Genetics Home Reference" ID="alcohol-use-disorder"/>
+              </AttributeSet>
+              <AttributeSet>
+                <Attribute Type="public definition">Alcohol use disorder is a diagnosis made when an individual has severe problems related to drinking alcohol. Alcohol use disorder can cause major health, social, and economic problems, and can endanger affected individuals and others through behaviors prompted by impaired decision-making and lowered inhibitions, such as aggression, unprotected sex, or driving while intoxicated.Alcohol use disorder is a broad diagnosis that encompasses several commonly used terms describing problems with drinking. It includes alcoholism, also called alcohol addiction, which is a long-lasting (chronic) condition characterized by a powerful, compulsive urge to drink alcohol and the inability to stop drinking after starting. In addition to alcoholism, alcohol use disorder includes alcohol abuse, which involves problem drinking without addiction.Habitual excessive use of alcohol changes the chemistry of the brain and leads to tolerance, which means that over time the amount of alcohol ingested needs to be increased to achieve the same effect. Long-term excessive use of alcohol may also produce dependence, which means that when people stop drinking, they have physical and psychological symptoms of withdrawal, such as sleep problems, irritability, jumpiness, shakiness, restlessness, headache, nausea, sweating, anxiety, and depression. In severe cases, agitation, fever, seizures, and hallucinations can occur; this pattern of severe withdrawal symptoms is called delirium tremens.The heavy drinking that often occurs in alcohol use disorder, and can also occur in short-term episodes called binge drinking, can lead to a life-threatening overdose known as alcohol poisoning. Alcohol poisoning occurs when a large quantity of alcohol consumed over a short time causes problems with breathing, heart rate, body temperature, and the gag reflex. Signs and symptoms can include vomiting, choking, confusion, slow or irregular breathing, pale or blue-tinged skin, seizures, a low body temperature, a toxic buildup of substances called ketones in the blood (alcoholic ketoacidosis), and passing out (unconsciousness). Coma, brain damage, and death can occur if alcohol poisoning is not treated immediately.Chronic heavy alcohol use can also cause long-term problems affecting many organs and systems of the body. These health problems include irreversible liver disease (cirrhosis), inflammation of the pancreas (pancreatitis), brain dysfunction (encephalopathy), nerve damage (neuropathy), high blood pressure (hypertension), stroke, weakening of the heart muscle (cardiomyopathy), irregular heartbeats (arrhythmia), and immune system problems. Long-term overuse of alcohol also increases the risk of certain cancers, including cancers of the mouth, throat, esophagus, liver, and breast. Alcohol use in pregnant women can cause birth defects and fetal alcohol syndrome, which can lead to lifelong physical and behavioral problems in the affected child.</Attribute>
+                <XRef DB="Genetics Home Reference" ID="alcohol-use-disorder"/>
+              </AttributeSet>
+              <XRef DB="MedGen" ID="C0001973"/>
+              <XRef DB="OMIM" ID="103780" Type="MIM"/>
+            </Trait>
+          </TraitSet>
+        </ConditionList>
+      </Interpretation>
+    </Interpretations>
+    <ClinicalAssertionList>
+      <ClinicalAssertion DateCreated="2011-01-25" DateLastUpdated="2017-04-07" ID="40356" SubmissionDate="2013-04-04">
+        <ClinVarSubmissionID localKey="100650.0001_ALCOHOL SENSITIVITY, ACUTE" title="ALDH2, GLU504LYS (rs671)_ALCOHOL SENSITIVITY, ACUTE"/>
+        <ClinVarAccession Accession="SCV000040356" OrgID="3" OrganizationCategory="resource" SubmitterName="OMIM" Type="SCV" Version="1"/>
+        <RecordStatus>current</RecordStatus>
+        <ReviewStatus>no assertion criteria provided</ReviewStatus>
+        <Interpretation DateLastEvaluated="2013-04-04">
+          <Description>Pathogenic</Description>
+        </Interpretation>
+        <Assertion>variation to disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>literature only</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">The designation for the ALDH2*2 polymorphism has been changed from GLU487LYS to GLU504LYS. The numbering change includes the N-terminal mitochondrial leader peptide of 17 amino acids (Li et al., 2006).</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">The ALDH2*2-encoded protein was first reported to have a change from glutamic acid (glutamate) to lysine at residue 487 (Yoshida et al., 1984). Hempel et al. (1985) and Hsu et al. (1985) also showed that the catalytic deficiency in mitochondrial ALDH in East Asians that manifests as acute alcohol sensitivity (610251) can be traced to a structural point mutation at amino acid position 487 of the polypeptide. The substitution of lysine for glutamic acid results from a G-A transition.</Attribute>
+              <Citation>
+                <ID Source="PubMed">6582480</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">4065146</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">2987944</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">About 50% of East Asians are missing the ALDH2 isozyme. Impraim et al. (1982) found that the livers of East Asians lacking the ALDH2 isozyme show an enzymatically inactive but immunologically cross-reactive material (CRM) corresponding to the ALDH2 isozyme.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7180842</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">To study the mechanism by which the ALDH2*2 allele exerts its dominant effect in decreasing ALDH2 activity in liver extracts and producing cutaneous flushing when the subject drinks alcohol, Xiao et al. (1995) cloned ALDH2*1 cDNA and generated the ALDH2*2 allele by site-directed mutagenesis. These cDNAs were transduced using retroviral vectors into HeLa and CV1 cells, which do not express ALDH2. The normal allele directed synthesis of immunoreactive ALDH2 protein with the expected isoelectric point and increased aldehyde dehydrogenase activity. The ALDH2*2 allele directed synthesis of mRNA and immunoreactive protein, but the protein lacked enzymatic activity. When ALDH2*1-expressing cells were transduced with ALDH2*2 vectors, both mRNAs were expressed and immunoreactive proteins with isoelectric points ranging between those of the 2 gene products were present, indicating that the subunits formed heteromers. ALDH2 activity in these cells was reduced below that of the parental ALDH2*1-expressing cells. Thus, the authors concluded that ALDH2*2 allele is sufficient to cause ALDH2 deficiency in vitro.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7593603</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Xiao et al. (1996) referred to the ALDH2 enzyme encoded by the ALDH2*1 allele (the wildtype form) as ALDH2E and the enzyme subunit encoded by ALDH2*2 as ALDH2K. They found that the ALDH2E enzyme was very stable, with a half-life of at least 22 hours. ALDH2K, on the other hand, had an enzyme half-life of only 14 hours. In cells expressing both subunits, most of the subunits assemble as heterotetramers, and these enzymes had a half-life of 13 hours. Thus, the effect of ALDH2K on enzyme turnover is dominant. Their studies indicated that ALDH2*2 exerts its dominant effect both by interfering with the catalytic activity of the enzyme and by increasing its turnover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">8903321</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Because genetic epidemiologic studies have suggested a mechanism by which homozygosity for the ALDH2*2 allele inhibits the development of alcoholism (103780) in Asians, Peng et al. (1999) recruited 18 adult Han Chinese men, matched by age, body-mass index, nutritional state, and homozygosity at the ALDH2 gene loci from a population of 273 men. Six individuals were chosen for each of the 3 ALDH2 allotypes, i.e., 2 homozygotes and 1 heterozygote. Following a low dose of ethanol, homozygous ALDH2*2 individuals were found to be strikingly responsive with pronounced cardiovascular hemodynamic effects as well as subjective perception of general discomfort for as long as 2 hours following ingestion.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10780266</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="103780" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 71 Japanese nondrinkers and 268 drinkers of alcohol, Liu et al. (2005) found that drinkers had a significantly higher frequency of the 504glu allele. Individuals with the 504lys allele had an increased risk of alcohol-induced flushing (odds ratio of 33.0).</Attribute>
+              <Citation>
+                <ID Source="PubMed">15654505</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 140 men and women of Chinese, Japanese, and Korean heritage, Wall et al. (2000) found that those with ALDH2*2 alleles experienced more severe hangovers (see 610251) and suggested that this may contribute, in part, to protection against the development of excessive or problematic drinking in Asian Americans. Yokoyama et al. (2005) found that inactive heterozygous ALDH2, alcohol flushing, and increased mean corpuscular volume (MCV) were positively associated with hangover susceptibility in Japanese workers, suggesting that acetaldehyde is etiologically linked to the development of hangover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10627091</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">16046871</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In 80 Han Chinese patients with arteriography-confirmed coronary artery disease who used only sublingual nitroglycerin, or glyceryl trinitrate (GTN) for angina relief, Li et al. (2006) found that the ALDH2*2 allele was associated with lack of efficacy of sublingual GTN. Enzyme kinetic analysis revealed that the catalytic efficiency of GTN metabolism of the glu504 protein is approximately 10-fold higher than that of the lys504 enzyme. Li et al. (2006) concluded that the presence of the ALDH2*2 allele contributes, in large part, to the lack of an efficacious clinical response to GTN and recommended that this genetic factor be considered when administering GTN, particularly to Asian patients, 30 to 50% of whom possess the inactive ALDH2*2 mutant allele.</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 32 adult Han Chinese male students with no personal or family history of alcoholism, Peng et al. (2007) found that heterozygosity for the ALDH2*2 allele resulted in higher acetaldehyde levels after alcohol ingestion compared to wildtype homozygotes. After ingestion, heterozygotes also had faster heart rates, faster blood flow in the facial and carotid arteries, and more subjective discomfort compared to wildtype homozygotes. Overall, the findings indicated that acetaldehyde, rather than ethanol or acetate, are responsible for observed alcohol sensitivity reactions. Peng et al. (2007) postulated that ALDH2*2 heterozygotes have decreased aversion to the adverse effects of alcohol, and thus increased risk of drinking, compared to those who are homozygous for ALDH2*2.</Attribute>
+              <Citation>
+                <ID Source="PubMed">17885622</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 1,032 Korean individuals, Kim et al. (2008) found that the combination of the ADH1B his48 allele (rs1229984; 103720.0001) and the ALDH2 lys504 allele offered protection against alcoholism. Individuals who carried both susceptibility alleles (arg48 and glu504, respectively) had a significantly increased risk for alcoholism (OR, 91.43; p = 1.4 x 10(-32)). Individuals with 1 protective and 1 susceptibility allele had a lesser increased risk for alcoholism (OR, 11.40; p = 3.5 x 10(-15)) compared to those with both protective alleles. Kim et al. (2008) calculated that alcoholism in the Korean population is 86.5% attributable to the detrimental effect of the ADH1B arg48 and the ALDH2 glu504 alleles.</Attribute>
+              <Citation>
+                <ID Source="PubMed">18056758</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a case-control study with 221 Chinese patients with esophageal cancer and 191 controls, Ding et al. (2010) found that alcohol drinkers with the ALDH2 A allele showed a significantly increased risk of esophageal cancer compared to drinkers with the ALDH2 G/G genotype (OR, 3.08) or compared to nondrinkers with any genotype (OR, 3.05). There was a significantly higher risk of esophageal cancer in those with higher alcohol consumption (OR, 11.93), and a dose-dependent positive effect was observed. Drinkers with high cumulative lifetime consumption (greater than 2.5 kg*year calculated as grams of alcohol consumed per day multiplied by number of years of consumption) carrying both the ALHD2 A allele and the G allele of ADH1B (his48 allele) had an even higher risk of esophageal cancer (OR, 53.15) compared to individuals with the ALDH2 G/G and ADH1B A/A genotypes. Ding et al. (2010) hypothesized that increased acetaldehyde in drinkers with these susceptibility alleles has a carcinogenic effect.</Attribute>
+              <Citation>
+                <ID Source="PubMed">20010786</ID>
+              </Citation>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="ALDH2"/>
+          </GeneList>
+          <Name>ALDH2, GLU504LYS (rs671)</Name>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name Type="NonHGVS">GLU504LYS (rs671)</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="OMIM" ID="100650.0001" Type="Allelic variant"/>
+          </XRefList>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="Preferred">ALCOHOL SENSITIVITY, ACUTE</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion DateCreated="2011-01-25" DateLastUpdated="2017-04-07" ID="40357" SubmissionDate="2010-12-30">
+        <ClinVarSubmissionID localKey="100650.0001_ALCOHOL DEPENDENCE, PROTECTION AGAINST" title="ALDH2, GLU504LYS (rs671)_ALCOHOL DEPENDENCE, PROTECTION AGAINST"/>
+        <ClinVarAccession Accession="SCV000040357" OrgID="3" OrganizationCategory="resource" SubmitterName="OMIM" Type="SCV" Version="1"/>
+        <RecordStatus>current</RecordStatus>
+        <ReviewStatus>no assertion criteria provided</ReviewStatus>
+        <Interpretation DateLastEvaluated="2010-02-01">
+          <Description>protective</Description>
+        </Interpretation>
+        <Assertion>variation to included disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>literature only</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">The designation for the ALDH2*2 polymorphism has been changed from GLU487LYS to GLU504LYS. The numbering change includes the N-terminal mitochondrial leader peptide of 17 amino acids (Li et al., 2006).</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">The ALDH2*2-encoded protein was first reported to have a change from glutamic acid (glutamate) to lysine at residue 487 (Yoshida et al., 1984). Hempel et al. (1985) and Hsu et al. (1985) also showed that the catalytic deficiency in mitochondrial ALDH in East Asians that manifests as acute alcohol sensitivity (610251) can be traced to a structural point mutation at amino acid position 487 of the polypeptide. The substitution of lysine for glutamic acid results from a G-A transition.</Attribute>
+              <Citation>
+                <ID Source="PubMed">6582480</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">4065146</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">2987944</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">About 50% of East Asians are missing the ALDH2 isozyme. Impraim et al. (1982) found that the livers of East Asians lacking the ALDH2 isozyme show an enzymatically inactive but immunologically cross-reactive material (CRM) corresponding to the ALDH2 isozyme.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7180842</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">To study the mechanism by which the ALDH2*2 allele exerts its dominant effect in decreasing ALDH2 activity in liver extracts and producing cutaneous flushing when the subject drinks alcohol, Xiao et al. (1995) cloned ALDH2*1 cDNA and generated the ALDH2*2 allele by site-directed mutagenesis. These cDNAs were transduced using retroviral vectors into HeLa and CV1 cells, which do not express ALDH2. The normal allele directed synthesis of immunoreactive ALDH2 protein with the expected isoelectric point and increased aldehyde dehydrogenase activity. The ALDH2*2 allele directed synthesis of mRNA and immunoreactive protein, but the protein lacked enzymatic activity. When ALDH2*1-expressing cells were transduced with ALDH2*2 vectors, both mRNAs were expressed and immunoreactive proteins with isoelectric points ranging between those of the 2 gene products were present, indicating that the subunits formed heteromers. ALDH2 activity in these cells was reduced below that of the parental ALDH2*1-expressing cells. Thus, the authors concluded that ALDH2*2 allele is sufficient to cause ALDH2 deficiency in vitro.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7593603</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Xiao et al. (1996) referred to the ALDH2 enzyme encoded by the ALDH2*1 allele (the wildtype form) as ALDH2E and the enzyme subunit encoded by ALDH2*2 as ALDH2K. They found that the ALDH2E enzyme was very stable, with a half-life of at least 22 hours. ALDH2K, on the other hand, had an enzyme half-life of only 14 hours. In cells expressing both subunits, most of the subunits assemble as heterotetramers, and these enzymes had a half-life of 13 hours. Thus, the effect of ALDH2K on enzyme turnover is dominant. Their studies indicated that ALDH2*2 exerts its dominant effect both by interfering with the catalytic activity of the enzyme and by increasing its turnover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">8903321</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Because genetic epidemiologic studies have suggested a mechanism by which homozygosity for the ALDH2*2 allele inhibits the development of alcoholism (103780) in Asians, Peng et al. (1999) recruited 18 adult Han Chinese men, matched by age, body-mass index, nutritional state, and homozygosity at the ALDH2 gene loci from a population of 273 men. Six individuals were chosen for each of the 3 ALDH2 allotypes, i.e., 2 homozygotes and 1 heterozygote. Following a low dose of ethanol, homozygous ALDH2*2 individuals were found to be strikingly responsive with pronounced cardiovascular hemodynamic effects as well as subjective perception of general discomfort for as long as 2 hours following ingestion.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10780266</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="103780" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 71 Japanese nondrinkers and 268 drinkers of alcohol, Liu et al. (2005) found that drinkers had a significantly higher frequency of the 504glu allele. Individuals with the 504lys allele had an increased risk of alcohol-induced flushing (odds ratio of 33.0).</Attribute>
+              <Citation>
+                <ID Source="PubMed">15654505</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 140 men and women of Chinese, Japanese, and Korean heritage, Wall et al. (2000) found that those with ALDH2*2 alleles experienced more severe hangovers (see 610251) and suggested that this may contribute, in part, to protection against the development of excessive or problematic drinking in Asian Americans. Yokoyama et al. (2005) found that inactive heterozygous ALDH2, alcohol flushing, and increased mean corpuscular volume (MCV) were positively associated with hangover susceptibility in Japanese workers, suggesting that acetaldehyde is etiologically linked to the development of hangover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10627091</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">16046871</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In 80 Han Chinese patients with arteriography-confirmed coronary artery disease who used only sublingual nitroglycerin, or glyceryl trinitrate (GTN) for angina relief, Li et al. (2006) found that the ALDH2*2 allele was associated with lack of efficacy of sublingual GTN. Enzyme kinetic analysis revealed that the catalytic efficiency of GTN metabolism of the glu504 protein is approximately 10-fold higher than that of the lys504 enzyme. Li et al. (2006) concluded that the presence of the ALDH2*2 allele contributes, in large part, to the lack of an efficacious clinical response to GTN and recommended that this genetic factor be considered when administering GTN, particularly to Asian patients, 30 to 50% of whom possess the inactive ALDH2*2 mutant allele.</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 32 adult Han Chinese male students with no personal or family history of alcoholism, Peng et al. (2007) found that heterozygosity for the ALDH2*2 allele resulted in higher acetaldehyde levels after alcohol ingestion compared to wildtype homozygotes. After ingestion, heterozygotes also had faster heart rates, faster blood flow in the facial and carotid arteries, and more subjective discomfort compared to wildtype homozygotes. Overall, the findings indicated that acetaldehyde, rather than ethanol or acetate, are responsible for observed alcohol sensitivity reactions. Peng et al. (2007) postulated that ALDH2*2 heterozygotes have decreased aversion to the adverse effects of alcohol, and thus increased risk of drinking, compared to those who are homozygous for ALDH2*2.</Attribute>
+              <Citation>
+                <ID Source="PubMed">17885622</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 1,032 Korean individuals, Kim et al. (2008) found that the combination of the ADH1B his48 allele (rs1229984; 103720.0001) and the ALDH2 lys504 allele offered protection against alcoholism. Individuals who carried both susceptibility alleles (arg48 and glu504, respectively) had a significantly increased risk for alcoholism (OR, 91.43; p = 1.4 x 10(-32)). Individuals with 1 protective and 1 susceptibility allele had a lesser increased risk for alcoholism (OR, 11.40; p = 3.5 x 10(-15)) compared to those with both protective alleles. Kim et al. (2008) calculated that alcoholism in the Korean population is 86.5% attributable to the detrimental effect of the ADH1B arg48 and the ALDH2 glu504 alleles.</Attribute>
+              <Citation>
+                <ID Source="PubMed">18056758</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a case-control study with 221 Chinese patients with esophageal cancer and 191 controls, Ding et al. (2010) found that alcohol drinkers with the ALDH2 A allele showed a significantly increased risk of esophageal cancer compared to drinkers with the ALDH2 G/G genotype (OR, 3.08) or compared to nondrinkers with any genotype (OR, 3.05). There was a significantly higher risk of esophageal cancer in those with higher alcohol consumption (OR, 11.93), and a dose-dependent positive effect was observed. Drinkers with high cumulative lifetime consumption (greater than 2.5 kg*year calculated as grams of alcohol consumed per day multiplied by number of years of consumption) carrying both the ALHD2 A allele and the G allele of ADH1B (his48 allele) had an even higher risk of esophageal cancer (OR, 53.15) compared to individuals with the ALDH2 G/G and ADH1B A/A genotypes. Ding et al. (2010) hypothesized that increased acetaldehyde in drinkers with these susceptibility alleles has a carcinogenic effect.</Attribute>
+              <Citation>
+                <ID Source="PubMed">20010786</ID>
+              </Citation>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="ALDH2"/>
+          </GeneList>
+          <Name>ALDH2, GLU504LYS (rs671)</Name>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name Type="NonHGVS">GLU504LYS (rs671)</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="OMIM" ID="100650.0001" Type="Allelic variant"/>
+          </XRefList>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="included">ALCOHOL DEPENDENCE, PROTECTION AGAINST</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion DateCreated="2011-01-25" DateLastUpdated="2017-04-07" ID="40358" SubmissionDate="2010-12-30">
+        <ClinVarSubmissionID localKey="100650.0001_HANGOVER, SUSCEPTIBILITY TO" title="ALDH2, GLU504LYS (rs671)_HANGOVER, SUSCEPTIBILITY TO"/>
+        <ClinVarAccession Accession="SCV000040358" OrgID="3" OrganizationCategory="resource" SubmitterName="OMIM" Type="SCV" Version="1"/>
+        <RecordStatus>current</RecordStatus>
+        <ReviewStatus>no assertion criteria provided</ReviewStatus>
+        <Interpretation DateLastEvaluated="2010-02-01">
+          <Description>risk factor</Description>
+        </Interpretation>
+        <Assertion>variation to included disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>literature only</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">The designation for the ALDH2*2 polymorphism has been changed from GLU487LYS to GLU504LYS. The numbering change includes the N-terminal mitochondrial leader peptide of 17 amino acids (Li et al., 2006).</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">The ALDH2*2-encoded protein was first reported to have a change from glutamic acid (glutamate) to lysine at residue 487 (Yoshida et al., 1984). Hempel et al. (1985) and Hsu et al. (1985) also showed that the catalytic deficiency in mitochondrial ALDH in East Asians that manifests as acute alcohol sensitivity (610251) can be traced to a structural point mutation at amino acid position 487 of the polypeptide. The substitution of lysine for glutamic acid results from a G-A transition.</Attribute>
+              <Citation>
+                <ID Source="PubMed">6582480</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">4065146</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">2987944</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">About 50% of East Asians are missing the ALDH2 isozyme. Impraim et al. (1982) found that the livers of East Asians lacking the ALDH2 isozyme show an enzymatically inactive but immunologically cross-reactive material (CRM) corresponding to the ALDH2 isozyme.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7180842</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">To study the mechanism by which the ALDH2*2 allele exerts its dominant effect in decreasing ALDH2 activity in liver extracts and producing cutaneous flushing when the subject drinks alcohol, Xiao et al. (1995) cloned ALDH2*1 cDNA and generated the ALDH2*2 allele by site-directed mutagenesis. These cDNAs were transduced using retroviral vectors into HeLa and CV1 cells, which do not express ALDH2. The normal allele directed synthesis of immunoreactive ALDH2 protein with the expected isoelectric point and increased aldehyde dehydrogenase activity. The ALDH2*2 allele directed synthesis of mRNA and immunoreactive protein, but the protein lacked enzymatic activity. When ALDH2*1-expressing cells were transduced with ALDH2*2 vectors, both mRNAs were expressed and immunoreactive proteins with isoelectric points ranging between those of the 2 gene products were present, indicating that the subunits formed heteromers. ALDH2 activity in these cells was reduced below that of the parental ALDH2*1-expressing cells. Thus, the authors concluded that ALDH2*2 allele is sufficient to cause ALDH2 deficiency in vitro.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7593603</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Xiao et al. (1996) referred to the ALDH2 enzyme encoded by the ALDH2*1 allele (the wildtype form) as ALDH2E and the enzyme subunit encoded by ALDH2*2 as ALDH2K. They found that the ALDH2E enzyme was very stable, with a half-life of at least 22 hours. ALDH2K, on the other hand, had an enzyme half-life of only 14 hours. In cells expressing both subunits, most of the subunits assemble as heterotetramers, and these enzymes had a half-life of 13 hours. Thus, the effect of ALDH2K on enzyme turnover is dominant. Their studies indicated that ALDH2*2 exerts its dominant effect both by interfering with the catalytic activity of the enzyme and by increasing its turnover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">8903321</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Because genetic epidemiologic studies have suggested a mechanism by which homozygosity for the ALDH2*2 allele inhibits the development of alcoholism (103780) in Asians, Peng et al. (1999) recruited 18 adult Han Chinese men, matched by age, body-mass index, nutritional state, and homozygosity at the ALDH2 gene loci from a population of 273 men. Six individuals were chosen for each of the 3 ALDH2 allotypes, i.e., 2 homozygotes and 1 heterozygote. Following a low dose of ethanol, homozygous ALDH2*2 individuals were found to be strikingly responsive with pronounced cardiovascular hemodynamic effects as well as subjective perception of general discomfort for as long as 2 hours following ingestion.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10780266</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="103780" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 71 Japanese nondrinkers and 268 drinkers of alcohol, Liu et al. (2005) found that drinkers had a significantly higher frequency of the 504glu allele. Individuals with the 504lys allele had an increased risk of alcohol-induced flushing (odds ratio of 33.0).</Attribute>
+              <Citation>
+                <ID Source="PubMed">15654505</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 140 men and women of Chinese, Japanese, and Korean heritage, Wall et al. (2000) found that those with ALDH2*2 alleles experienced more severe hangovers (see 610251) and suggested that this may contribute, in part, to protection against the development of excessive or problematic drinking in Asian Americans. Yokoyama et al. (2005) found that inactive heterozygous ALDH2, alcohol flushing, and increased mean corpuscular volume (MCV) were positively associated with hangover susceptibility in Japanese workers, suggesting that acetaldehyde is etiologically linked to the development of hangover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10627091</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">16046871</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In 80 Han Chinese patients with arteriography-confirmed coronary artery disease who used only sublingual nitroglycerin, or glyceryl trinitrate (GTN) for angina relief, Li et al. (2006) found that the ALDH2*2 allele was associated with lack of efficacy of sublingual GTN. Enzyme kinetic analysis revealed that the catalytic efficiency of GTN metabolism of the glu504 protein is approximately 10-fold higher than that of the lys504 enzyme. Li et al. (2006) concluded that the presence of the ALDH2*2 allele contributes, in large part, to the lack of an efficacious clinical response to GTN and recommended that this genetic factor be considered when administering GTN, particularly to Asian patients, 30 to 50% of whom possess the inactive ALDH2*2 mutant allele.</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 32 adult Han Chinese male students with no personal or family history of alcoholism, Peng et al. (2007) found that heterozygosity for the ALDH2*2 allele resulted in higher acetaldehyde levels after alcohol ingestion compared to wildtype homozygotes. After ingestion, heterozygotes also had faster heart rates, faster blood flow in the facial and carotid arteries, and more subjective discomfort compared to wildtype homozygotes. Overall, the findings indicated that acetaldehyde, rather than ethanol or acetate, are responsible for observed alcohol sensitivity reactions. Peng et al. (2007) postulated that ALDH2*2 heterozygotes have decreased aversion to the adverse effects of alcohol, and thus increased risk of drinking, compared to those who are homozygous for ALDH2*2.</Attribute>
+              <Citation>
+                <ID Source="PubMed">17885622</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 1,032 Korean individuals, Kim et al. (2008) found that the combination of the ADH1B his48 allele (rs1229984; 103720.0001) and the ALDH2 lys504 allele offered protection against alcoholism. Individuals who carried both susceptibility alleles (arg48 and glu504, respectively) had a significantly increased risk for alcoholism (OR, 91.43; p = 1.4 x 10(-32)). Individuals with 1 protective and 1 susceptibility allele had a lesser increased risk for alcoholism (OR, 11.40; p = 3.5 x 10(-15)) compared to those with both protective alleles. Kim et al. (2008) calculated that alcoholism in the Korean population is 86.5% attributable to the detrimental effect of the ADH1B arg48 and the ALDH2 glu504 alleles.</Attribute>
+              <Citation>
+                <ID Source="PubMed">18056758</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a case-control study with 221 Chinese patients with esophageal cancer and 191 controls, Ding et al. (2010) found that alcohol drinkers with the ALDH2 A allele showed a significantly increased risk of esophageal cancer compared to drinkers with the ALDH2 G/G genotype (OR, 3.08) or compared to nondrinkers with any genotype (OR, 3.05). There was a significantly higher risk of esophageal cancer in those with higher alcohol consumption (OR, 11.93), and a dose-dependent positive effect was observed. Drinkers with high cumulative lifetime consumption (greater than 2.5 kg*year calculated as grams of alcohol consumed per day multiplied by number of years of consumption) carrying both the ALHD2 A allele and the G allele of ADH1B (his48 allele) had an even higher risk of esophageal cancer (OR, 53.15) compared to individuals with the ALDH2 G/G and ADH1B A/A genotypes. Ding et al. (2010) hypothesized that increased acetaldehyde in drinkers with these susceptibility alleles has a carcinogenic effect.</Attribute>
+              <Citation>
+                <ID Source="PubMed">20010786</ID>
+              </Citation>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="ALDH2"/>
+          </GeneList>
+          <Name>ALDH2, GLU504LYS (rs671)</Name>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name Type="NonHGVS">GLU504LYS (rs671)</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="OMIM" ID="100650.0001" Type="Allelic variant"/>
+          </XRefList>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="included">HANGOVER, SUSCEPTIBILITY TO</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion DateCreated="2011-01-25" DateLastUpdated="2017-04-07" ID="40359" SubmissionDate="2010-12-30">
+        <ClinVarSubmissionID localKey="100650.0001_SUBLINGUAL NITROGLYCERIN, SUSCEPTIBILITY TO POOR RESPONSE TO" title="ALDH2, GLU504LYS (rs671)_SUBLINGUAL NITROGLYCERIN, SUSCEPTIBILITY TO POOR RESPONSE TO"/>
+        <ClinVarAccession Accession="SCV000040359" OrgID="3" OrganizationCategory="resource" SubmitterName="OMIM" Type="SCV" Version="1"/>
+        <RecordStatus>current</RecordStatus>
+        <ReviewStatus>no assertion criteria provided</ReviewStatus>
+        <Interpretation DateLastEvaluated="2010-02-01">
+          <Description>risk factor</Description>
+        </Interpretation>
+        <Assertion>variation to included disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>literature only</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">The designation for the ALDH2*2 polymorphism has been changed from GLU487LYS to GLU504LYS. The numbering change includes the N-terminal mitochondrial leader peptide of 17 amino acids (Li et al., 2006).</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">The ALDH2*2-encoded protein was first reported to have a change from glutamic acid (glutamate) to lysine at residue 487 (Yoshida et al., 1984). Hempel et al. (1985) and Hsu et al. (1985) also showed that the catalytic deficiency in mitochondrial ALDH in East Asians that manifests as acute alcohol sensitivity (610251) can be traced to a structural point mutation at amino acid position 487 of the polypeptide. The substitution of lysine for glutamic acid results from a G-A transition.</Attribute>
+              <Citation>
+                <ID Source="PubMed">6582480</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">4065146</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">2987944</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">About 50% of East Asians are missing the ALDH2 isozyme. Impraim et al. (1982) found that the livers of East Asians lacking the ALDH2 isozyme show an enzymatically inactive but immunologically cross-reactive material (CRM) corresponding to the ALDH2 isozyme.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7180842</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">To study the mechanism by which the ALDH2*2 allele exerts its dominant effect in decreasing ALDH2 activity in liver extracts and producing cutaneous flushing when the subject drinks alcohol, Xiao et al. (1995) cloned ALDH2*1 cDNA and generated the ALDH2*2 allele by site-directed mutagenesis. These cDNAs were transduced using retroviral vectors into HeLa and CV1 cells, which do not express ALDH2. The normal allele directed synthesis of immunoreactive ALDH2 protein with the expected isoelectric point and increased aldehyde dehydrogenase activity. The ALDH2*2 allele directed synthesis of mRNA and immunoreactive protein, but the protein lacked enzymatic activity. When ALDH2*1-expressing cells were transduced with ALDH2*2 vectors, both mRNAs were expressed and immunoreactive proteins with isoelectric points ranging between those of the 2 gene products were present, indicating that the subunits formed heteromers. ALDH2 activity in these cells was reduced below that of the parental ALDH2*1-expressing cells. Thus, the authors concluded that ALDH2*2 allele is sufficient to cause ALDH2 deficiency in vitro.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7593603</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Xiao et al. (1996) referred to the ALDH2 enzyme encoded by the ALDH2*1 allele (the wildtype form) as ALDH2E and the enzyme subunit encoded by ALDH2*2 as ALDH2K. They found that the ALDH2E enzyme was very stable, with a half-life of at least 22 hours. ALDH2K, on the other hand, had an enzyme half-life of only 14 hours. In cells expressing both subunits, most of the subunits assemble as heterotetramers, and these enzymes had a half-life of 13 hours. Thus, the effect of ALDH2K on enzyme turnover is dominant. Their studies indicated that ALDH2*2 exerts its dominant effect both by interfering with the catalytic activity of the enzyme and by increasing its turnover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">8903321</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Because genetic epidemiologic studies have suggested a mechanism by which homozygosity for the ALDH2*2 allele inhibits the development of alcoholism (103780) in Asians, Peng et al. (1999) recruited 18 adult Han Chinese men, matched by age, body-mass index, nutritional state, and homozygosity at the ALDH2 gene loci from a population of 273 men. Six individuals were chosen for each of the 3 ALDH2 allotypes, i.e., 2 homozygotes and 1 heterozygote. Following a low dose of ethanol, homozygous ALDH2*2 individuals were found to be strikingly responsive with pronounced cardiovascular hemodynamic effects as well as subjective perception of general discomfort for as long as 2 hours following ingestion.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10780266</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="103780" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 71 Japanese nondrinkers and 268 drinkers of alcohol, Liu et al. (2005) found that drinkers had a significantly higher frequency of the 504glu allele. Individuals with the 504lys allele had an increased risk of alcohol-induced flushing (odds ratio of 33.0).</Attribute>
+              <Citation>
+                <ID Source="PubMed">15654505</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 140 men and women of Chinese, Japanese, and Korean heritage, Wall et al. (2000) found that those with ALDH2*2 alleles experienced more severe hangovers (see 610251) and suggested that this may contribute, in part, to protection against the development of excessive or problematic drinking in Asian Americans. Yokoyama et al. (2005) found that inactive heterozygous ALDH2, alcohol flushing, and increased mean corpuscular volume (MCV) were positively associated with hangover susceptibility in Japanese workers, suggesting that acetaldehyde is etiologically linked to the development of hangover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10627091</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">16046871</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In 80 Han Chinese patients with arteriography-confirmed coronary artery disease who used only sublingual nitroglycerin, or glyceryl trinitrate (GTN) for angina relief, Li et al. (2006) found that the ALDH2*2 allele was associated with lack of efficacy of sublingual GTN. Enzyme kinetic analysis revealed that the catalytic efficiency of GTN metabolism of the glu504 protein is approximately 10-fold higher than that of the lys504 enzyme. Li et al. (2006) concluded that the presence of the ALDH2*2 allele contributes, in large part, to the lack of an efficacious clinical response to GTN and recommended that this genetic factor be considered when administering GTN, particularly to Asian patients, 30 to 50% of whom possess the inactive ALDH2*2 mutant allele.</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 32 adult Han Chinese male students with no personal or family history of alcoholism, Peng et al. (2007) found that heterozygosity for the ALDH2*2 allele resulted in higher acetaldehyde levels after alcohol ingestion compared to wildtype homozygotes. After ingestion, heterozygotes also had faster heart rates, faster blood flow in the facial and carotid arteries, and more subjective discomfort compared to wildtype homozygotes. Overall, the findings indicated that acetaldehyde, rather than ethanol or acetate, are responsible for observed alcohol sensitivity reactions. Peng et al. (2007) postulated that ALDH2*2 heterozygotes have decreased aversion to the adverse effects of alcohol, and thus increased risk of drinking, compared to those who are homozygous for ALDH2*2.</Attribute>
+              <Citation>
+                <ID Source="PubMed">17885622</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 1,032 Korean individuals, Kim et al. (2008) found that the combination of the ADH1B his48 allele (rs1229984; 103720.0001) and the ALDH2 lys504 allele offered protection against alcoholism. Individuals who carried both susceptibility alleles (arg48 and glu504, respectively) had a significantly increased risk for alcoholism (OR, 91.43; p = 1.4 x 10(-32)). Individuals with 1 protective and 1 susceptibility allele had a lesser increased risk for alcoholism (OR, 11.40; p = 3.5 x 10(-15)) compared to those with both protective alleles. Kim et al. (2008) calculated that alcoholism in the Korean population is 86.5% attributable to the detrimental effect of the ADH1B arg48 and the ALDH2 glu504 alleles.</Attribute>
+              <Citation>
+                <ID Source="PubMed">18056758</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a case-control study with 221 Chinese patients with esophageal cancer and 191 controls, Ding et al. (2010) found that alcohol drinkers with the ALDH2 A allele showed a significantly increased risk of esophageal cancer compared to drinkers with the ALDH2 G/G genotype (OR, 3.08) or compared to nondrinkers with any genotype (OR, 3.05). There was a significantly higher risk of esophageal cancer in those with higher alcohol consumption (OR, 11.93), and a dose-dependent positive effect was observed. Drinkers with high cumulative lifetime consumption (greater than 2.5 kg*year calculated as grams of alcohol consumed per day multiplied by number of years of consumption) carrying both the ALHD2 A allele and the G allele of ADH1B (his48 allele) had an even higher risk of esophageal cancer (OR, 53.15) compared to individuals with the ALDH2 G/G and ADH1B A/A genotypes. Ding et al. (2010) hypothesized that increased acetaldehyde in drinkers with these susceptibility alleles has a carcinogenic effect.</Attribute>
+              <Citation>
+                <ID Source="PubMed">20010786</ID>
+              </Citation>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="ALDH2"/>
+          </GeneList>
+          <Name>ALDH2, GLU504LYS (rs671)</Name>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name Type="NonHGVS">GLU504LYS (rs671)</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="OMIM" ID="100650.0001" Type="Allelic variant"/>
+          </XRefList>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="included">SUBLINGUAL NITROGLYCERIN, SUSCEPTIBILITY TO POOR RESPONSE TO</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+      <ClinicalAssertion DateCreated="2011-01-25" DateLastUpdated="2017-04-07" ID="40360" SubmissionDate="2010-12-30">
+        <ClinVarSubmissionID localKey="100650.0001_ESOPHAGEAL CANCER, ALCOHOL-RELATED, SUSCEPTIBILITY TO" title="ALDH2, GLU504LYS (rs671)_ESOPHAGEAL CANCER, ALCOHOL-RELATED, SUSCEPTIBILITY TO"/>
+        <ClinVarAccession Accession="SCV000040360" OrgID="3" OrganizationCategory="resource" SubmitterName="OMIM" Type="SCV" Version="1"/>
+        <RecordStatus>current</RecordStatus>
+        <ReviewStatus>no assertion criteria provided</ReviewStatus>
+        <Interpretation DateLastEvaluated="2010-02-01">
+          <Description>risk factor</Description>
+        </Interpretation>
+        <Assertion>variation to included disease</Assertion>
+        <ObservedInList>
+          <ObservedIn>
+            <Sample>
+              <Origin>germline</Origin>
+              <Species>human</Species>
+              <AffectedStatus>not provided</AffectedStatus>
+            </Sample>
+            <Method>
+              <MethodType>literature only</MethodType>
+            </Method>
+            <ObservedData>
+              <Attribute Type="Description">The designation for the ALDH2*2 polymorphism has been changed from GLU487LYS to GLU504LYS. The numbering change includes the N-terminal mitochondrial leader peptide of 17 amino acids (Li et al., 2006).</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">The ALDH2*2-encoded protein was first reported to have a change from glutamic acid (glutamate) to lysine at residue 487 (Yoshida et al., 1984). Hempel et al. (1985) and Hsu et al. (1985) also showed that the catalytic deficiency in mitochondrial ALDH in East Asians that manifests as acute alcohol sensitivity (610251) can be traced to a structural point mutation at amino acid position 487 of the polypeptide. The substitution of lysine for glutamic acid results from a G-A transition.</Attribute>
+              <Citation>
+                <ID Source="PubMed">6582480</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">4065146</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">2987944</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">About 50% of East Asians are missing the ALDH2 isozyme. Impraim et al. (1982) found that the livers of East Asians lacking the ALDH2 isozyme show an enzymatically inactive but immunologically cross-reactive material (CRM) corresponding to the ALDH2 isozyme.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7180842</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">To study the mechanism by which the ALDH2*2 allele exerts its dominant effect in decreasing ALDH2 activity in liver extracts and producing cutaneous flushing when the subject drinks alcohol, Xiao et al. (1995) cloned ALDH2*1 cDNA and generated the ALDH2*2 allele by site-directed mutagenesis. These cDNAs were transduced using retroviral vectors into HeLa and CV1 cells, which do not express ALDH2. The normal allele directed synthesis of immunoreactive ALDH2 protein with the expected isoelectric point and increased aldehyde dehydrogenase activity. The ALDH2*2 allele directed synthesis of mRNA and immunoreactive protein, but the protein lacked enzymatic activity. When ALDH2*1-expressing cells were transduced with ALDH2*2 vectors, both mRNAs were expressed and immunoreactive proteins with isoelectric points ranging between those of the 2 gene products were present, indicating that the subunits formed heteromers. ALDH2 activity in these cells was reduced below that of the parental ALDH2*1-expressing cells. Thus, the authors concluded that ALDH2*2 allele is sufficient to cause ALDH2 deficiency in vitro.</Attribute>
+              <Citation>
+                <ID Source="PubMed">7593603</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Xiao et al. (1996) referred to the ALDH2 enzyme encoded by the ALDH2*1 allele (the wildtype form) as ALDH2E and the enzyme subunit encoded by ALDH2*2 as ALDH2K. They found that the ALDH2E enzyme was very stable, with a half-life of at least 22 hours. ALDH2K, on the other hand, had an enzyme half-life of only 14 hours. In cells expressing both subunits, most of the subunits assemble as heterotetramers, and these enzymes had a half-life of 13 hours. Thus, the effect of ALDH2K on enzyme turnover is dominant. Their studies indicated that ALDH2*2 exerts its dominant effect both by interfering with the catalytic activity of the enzyme and by increasing its turnover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">8903321</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Because genetic epidemiologic studies have suggested a mechanism by which homozygosity for the ALDH2*2 allele inhibits the development of alcoholism (103780) in Asians, Peng et al. (1999) recruited 18 adult Han Chinese men, matched by age, body-mass index, nutritional state, and homozygosity at the ALDH2 gene loci from a population of 273 men. Six individuals were chosen for each of the 3 ALDH2 allotypes, i.e., 2 homozygotes and 1 heterozygote. Following a low dose of ethanol, homozygous ALDH2*2 individuals were found to be strikingly responsive with pronounced cardiovascular hemodynamic effects as well as subjective perception of general discomfort for as long as 2 hours following ingestion.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10780266</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="103780" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 71 Japanese nondrinkers and 268 drinkers of alcohol, Liu et al. (2005) found that drinkers had a significantly higher frequency of the 504glu allele. Individuals with the 504lys allele had an increased risk of alcohol-induced flushing (odds ratio of 33.0).</Attribute>
+              <Citation>
+                <ID Source="PubMed">15654505</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 140 men and women of Chinese, Japanese, and Korean heritage, Wall et al. (2000) found that those with ALDH2*2 alleles experienced more severe hangovers (see 610251) and suggested that this may contribute, in part, to protection against the development of excessive or problematic drinking in Asian Americans. Yokoyama et al. (2005) found that inactive heterozygous ALDH2, alcohol flushing, and increased mean corpuscular volume (MCV) were positively associated with hangover susceptibility in Japanese workers, suggesting that acetaldehyde is etiologically linked to the development of hangover.</Attribute>
+              <Citation>
+                <ID Source="PubMed">10627091</ID>
+              </Citation>
+              <Citation>
+                <ID Source="PubMed">16046871</ID>
+              </Citation>
+              <XRef DB="OMIM" ID="610251" Type="MIM"/>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In 80 Han Chinese patients with arteriography-confirmed coronary artery disease who used only sublingual nitroglycerin, or glyceryl trinitrate (GTN) for angina relief, Li et al. (2006) found that the ALDH2*2 allele was associated with lack of efficacy of sublingual GTN. Enzyme kinetic analysis revealed that the catalytic efficiency of GTN metabolism of the glu504 protein is approximately 10-fold higher than that of the lys504 enzyme. Li et al. (2006) concluded that the presence of the ALDH2*2 allele contributes, in large part, to the lack of an efficacious clinical response to GTN and recommended that this genetic factor be considered when administering GTN, particularly to Asian patients, 30 to 50% of whom possess the inactive ALDH2*2 mutant allele.</Attribute>
+              <Citation>
+                <ID Source="PubMed">16440063</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a study of 32 adult Han Chinese male students with no personal or family history of alcoholism, Peng et al. (2007) found that heterozygosity for the ALDH2*2 allele resulted in higher acetaldehyde levels after alcohol ingestion compared to wildtype homozygotes. After ingestion, heterozygotes also had faster heart rates, faster blood flow in the facial and carotid arteries, and more subjective discomfort compared to wildtype homozygotes. Overall, the findings indicated that acetaldehyde, rather than ethanol or acetate, are responsible for observed alcohol sensitivity reactions. Peng et al. (2007) postulated that ALDH2*2 heterozygotes have decreased aversion to the adverse effects of alcohol, and thus increased risk of drinking, compared to those who are homozygous for ALDH2*2.</Attribute>
+              <Citation>
+                <ID Source="PubMed">17885622</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">Among 1,032 Korean individuals, Kim et al. (2008) found that the combination of the ADH1B his48 allele (rs1229984; 103720.0001) and the ALDH2 lys504 allele offered protection against alcoholism. Individuals who carried both susceptibility alleles (arg48 and glu504, respectively) had a significantly increased risk for alcoholism (OR, 91.43; p = 1.4 x 10(-32)). Individuals with 1 protective and 1 susceptibility allele had a lesser increased risk for alcoholism (OR, 11.40; p = 3.5 x 10(-15)) compared to those with both protective alleles. Kim et al. (2008) calculated that alcoholism in the Korean population is 86.5% attributable to the detrimental effect of the ADH1B arg48 and the ALDH2 glu504 alleles.</Attribute>
+              <Citation>
+                <ID Source="PubMed">18056758</ID>
+              </Citation>
+            </ObservedData>
+            <ObservedData>
+              <Attribute Type="Description">In a case-control study with 221 Chinese patients with esophageal cancer and 191 controls, Ding et al. (2010) found that alcohol drinkers with the ALDH2 A allele showed a significantly increased risk of esophageal cancer compared to drinkers with the ALDH2 G/G genotype (OR, 3.08) or compared to nondrinkers with any genotype (OR, 3.05). There was a significantly higher risk of esophageal cancer in those with higher alcohol consumption (OR, 11.93), and a dose-dependent positive effect was observed. Drinkers with high cumulative lifetime consumption (greater than 2.5 kg*year calculated as grams of alcohol consumed per day multiplied by number of years of consumption) carrying both the ALHD2 A allele and the G allele of ADH1B (his48 allele) had an even higher risk of esophageal cancer (OR, 53.15) compared to individuals with the ALDH2 G/G and ADH1B A/A genotypes. Ding et al. (2010) hypothesized that increased acetaldehyde in drinkers with these susceptibility alleles has a carcinogenic effect.</Attribute>
+              <Citation>
+                <ID Source="PubMed">20010786</ID>
+              </Citation>
+            </ObservedData>
+          </ObservedIn>
+        </ObservedInList>
+        <SimpleAllele>
+          <GeneList>
+            <Gene Symbol="ALDH2"/>
+          </GeneList>
+          <Name>ALDH2, GLU504LYS (rs671)</Name>
+          <VariantType>Variation</VariantType>
+          <OtherNameList>
+            <Name Type="NonHGVS">GLU504LYS (rs671)</Name>
+          </OtherNameList>
+          <XRefList>
+            <XRef DB="OMIM" ID="100650.0001" Type="Allelic variant"/>
+          </XRefList>
+        </SimpleAllele>
+        <TraitSet Type="Disease">
+          <Trait Type="Disease">
+            <Name>
+              <ElementValue Type="included">ESOPHAGEAL CANCER, ALCOHOL-RELATED, SUSCEPTIBILITY TO</ElementValue>
+            </Name>
+          </Trait>
+        </TraitSet>
+      </ClinicalAssertion>
+    </ClinicalAssertionList>
+    <TraitMappingList>
+      <TraitMapping ClinicalAssertionID="40359" MappingRef="Alternate" MappingType="Name" MappingValue="SUBLINGUAL NITROGLYCERIN, SUSCEPTIBILITY TO POOR RESPONSE TO" TraitType="Disease">
+        <MedGen CUI="C2676227" Name="Sublingual nitroglycerin, susceptibility to poor response to"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="40360" MappingRef="Alternate" MappingType="Name" MappingValue="ESOPHAGEAL CANCER, ALCOHOL-RELATED, SUSCEPTIBILITY TO" TraitType="Disease">
+        <MedGen CUI="C3149226" Name="Esophageal cancer, alcohol-related, susceptibility to"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="40358" MappingRef="Alternate" MappingType="Name" MappingValue="HANGOVER, SUSCEPTIBILITY TO" TraitType="Disease">
+        <MedGen CUI="C2608086" Name="Susceptibility to hangover"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="40357" MappingRef="Alternate" MappingType="Name" MappingValue="ALCOHOL DEPENDENCE, PROTECTION AGAINST" TraitType="Disease">
+        <MedGen CUI="C0001973" Name="Alcohol dependence"/>
+      </TraitMapping>
+      <TraitMapping ClinicalAssertionID="40356" MappingRef="Preferred" MappingType="Name" MappingValue="ALCOHOL SENSITIVITY, ACUTE" TraitType="Disease">
+        <MedGen CUI="C2674838" Name="Acute alcohol sensitivity"/>
+      </TraitMapping>
+    </TraitMappingList>
+  </InterpretedRecord>
+</VariationArchive>
