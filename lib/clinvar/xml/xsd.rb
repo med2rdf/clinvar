@@ -1,3 +1,5 @@
+require 'active_support'
+require 'active_support/core_ext/string'
 require 'wsdl/xmlSchema/xsd2ruby'
 
 # Namespace for ClinVar
@@ -63,6 +65,15 @@ end
 module XSD
   module CodeGen
     class ClassDef
+      def attributes
+        @attrdef.collect { |x| x[0] }.compact
+      end
+
+      def append_type_info(obj)
+        @comment = (@comment || '') + "\nType: #{obj.class.to_s.demodulize}\n"
+        self
+      end
+
       def include_module(module_name)
         def_code("include #{module_name}")
         self
