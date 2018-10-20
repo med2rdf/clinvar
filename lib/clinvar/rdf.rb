@@ -7,6 +7,7 @@ module ClinVar
   module RDF
     autoload :Model, 'clinvar/rdf/model'
     autoload :ModelHelper, 'clinvar/rdf/model_helper'
+    autoload :Vocab, 'clinvar/rdf/vocab'
   end
 
   # Namespace for ClinVar::XML
