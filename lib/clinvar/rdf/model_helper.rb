@@ -21,7 +21,8 @@ module ClinVar
       # Module to define class method for ClinVar::RDF::ModelHelper
       module ClassMethods
         def build(*args)
-          new
+          raise if args.size > 1
+          new.set_attributes(args.first)
         end
       end
 
