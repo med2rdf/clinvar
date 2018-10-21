@@ -103,6 +103,68 @@ module ClinVar
           graph << [subject, ClinVar::RDF::Vocab[key.to_s.underscore], v]
         end
       end
+
+      def process_elements(graph, subject)
+        element_mapping&.each do |key, klass|
+          next unless (v = send(key)).present?
+
+          if klass.ancestors.include?(XSD::XSDAnySimpleType)
+            process_simple_type(v, graph, subject, key, klass)
+          elsif klass.ancestors.include?(::String)
+            process_string(v, graph, subject, key, klass)
+          elsif klass.ancestors.include?(::Array)
+            process_array(v, graph, subject, key, klass)
+          else
+            process_object(v, graph, subject, key, klass)
+          end
+        end
+      end
+
+      def process_simple_type(value, graph, subject, element_name, klass)
+        Array(value).each do |x|
+          next unless (y = x.cast(klass)).present?
+
+          graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], y]
+        end
+      end
+
+      def process_string(value, graph, subject, element_name, klass)
+        if value.is_a? Array
+          value.each do |x|
+            if x.is_a? Hash
+              s = ::RDF::Node.new
+              graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], s]
+              graph << klass.build(x).subject(s)
+            elsif x.is_a?(String) && (str = x.match(/^"?(.*)"?$/))
+              graph << [subject, ClinVar::RDF::Vocab["#{element_name.to_s.underscore}"], str[1]]
+            else
+              raise "#{x.class} #{x}"
+            end
+          end
+        else
+          raise
+        end
+      end
+
+      def process_array(value, graph, subject, element_name, klass)
+        klass.build(value).each do |x|
+          s = ::RDF::Node.new
+          graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], s]
+          graph << x.subject(s)
+        end
+      end
+
+      def process_object(value, graph, subject, element_name, klass)
+        if value.is_a? Array
+          value.each do |x|
+            s = ::RDF::Node.new
+            graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], s]
+            graph << klass.build(x).subject(s)
+          end
+        else
+          raise
+        end
+      end
     end
   end
 end
