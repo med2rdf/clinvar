@@ -21,8 +21,38 @@ module ClinVar
       # Module to define class method for ClinVar::RDF::ModelHelper
       module ClassMethods
         def build(*args)
-          raise if args.size > 1
-          new.set_attributes(args.first)
+          obj = new
+
+          if obj.is_a? String
+            arg = if args.first.is_a?(Hash) && args.first.key?('content')
+                    args.first['content']
+                  elsif args.first.is_a? String
+                    args.first
+                  else
+                    raise "#{obj.class} #{args.first}"
+                  end
+            obj = new(arg)
+            if args.first.is_a?(Hash)
+              obj.set_attributes(args.first.reject { |k, _| k == 'content' })
+            end
+          elsif obj.is_a? Array
+            arg = args.first
+
+            arg.each do |hash|
+              raise unless hash.is_a? Hash
+              hash.each do |_, v|
+                raise unless v.is_a? Array
+                v.each do |x|
+                  obj << obj.class.element_type.build(x)
+                end
+              end
+            end
+          else
+            raise if args.size > 1
+            obj.set_attributes(args.first)
+          end
+
+          obj
         end
       end
 
