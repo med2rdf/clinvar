@@ -1,4 +1,8 @@
+require 'active_support'
+require 'active_support/core_ext/string'
 require 'rdf'
+require 'soap/baseData'
+require 'xsd/codegen/gensupport'
 
 # Namespace for ClinVar
 module ClinVar
@@ -8,6 +12,11 @@ module ClinVar
 
     # Module for helping model classes
     module ModelHelper
+      include XSD::CodeGen::GenSupport
+
+      public :safevarname, :safeconstname
+
+      XMLATTR_PREFIX = 'xmlattr_'.freeze
 
       # Module to define class method for ClinVar::RDF::ModelHelper
       module ClassMethods
@@ -20,6 +29,20 @@ module ClinVar
         klass.extend ClassMethods
       end
 
+      def set_attributes(hash)
+        hash.each do |k, v|
+          varname = safevarname(k).to_sym
+          if self.class.const_defined? "Attr#{safeconstname(k)}"
+            send("#{XMLATTR_PREFIX}#{safemethodname(k)}=", v)
+          elsif respond_to?("#{varname}=")
+            send("#{varname}=", v)
+          else
+            raise("Failed to find setter for #{k}")
+          end
+        end
+
+        self
+      end
 
       def subject(uri = nil)
         @__subject__ = if uri.is_a?(::RDF::Node)
@@ -38,6 +61,68 @@ module ClinVar
 
           process_attributes(g, subject)
           process_elements(g, subject)
+        end
+      end
+
+      def process_attributes(graph, subject)
+        dup.attribute_mapping&.each do |key, klass|
+          next unless (v = send("#{XMLATTR_PREFIX}#{safemethodname(key)}")).present?
+          next unless (v = v.cast(klass)).present?
+
+          graph << [subject, ClinVar::RDF::Vocab[key.to_s.underscore], v]
+        end
+      end
+    end
+  end
+end
+
+class Object
+  def cast(klass)
+    if klass.ancestors.include?(XSD::XSDDate)
+      ::RDF::Literal::Date.new(self)
+    elsif klass.ancestors.include?(XSD::XSDInteger)
+      ::RDF::Literal::Integer.new(self)
+    else
+      klass.new(self)
+    end
+  rescue
+    nil
+  end
+end
+
+class Symbol
+  def underscore
+    to_s.underscore
+  end
+
+  def scan(*args)
+    to_s.scan(*args)
+  end
+end
+
+module XSD
+  module CodeGen
+    module GenSupport
+      def safemethodname(name)
+        name     = name.underscore
+        postfix  = name[/[=?!]$/]
+        safename = name.scan(/[a-zA-Z0-9_]+/).join('_')
+        safename = uncapitalize(safename)
+        safename += postfix if postfix
+        if /\A[a-z]/ !~ safename or keyword?(safename)
+          "m_#{safename}"
+        else
+          safename
+        end
+      end
+
+      def safevarname(name)
+        name     = name.underscore
+        safename = uncapitalize(name.scan(/[a-zA-Z0-9_]+/).join('_'))
+        if /\A[a-z]/ !~ safename or keyword?(safename)
+          "v_#{safename}"
+        else
+          safename
         end
       end
     end
