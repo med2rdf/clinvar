@@ -20,8 +20,25 @@ module ClinVar
         klass.extend ClassMethods
       end
 
+
+      def subject(uri = nil)
+        @__subject__ = if uri.is_a?(::RDF::Node)
+                         uri
+                       else
+                         ::RDF::URI.new(uri)
+                       end
+        self
+      end
+
       def to_rdf
-        ::RDF::Graph.new
+        subject = @__subject__ || ::RDF::Node.new
+
+        ::RDF::Graph.new do |g|
+          g << [subject, ::RDF.type, ClinVar::RDF::Vocab[self.class.to_s.demodulize]]
+
+          process_attributes(g, subject)
+          process_elements(g, subject)
+        end
       end
     end
   end
