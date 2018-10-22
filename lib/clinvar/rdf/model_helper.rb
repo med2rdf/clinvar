@@ -149,7 +149,7 @@ module ClinVar
       def process_array(value, graph, subject, element_name, klass)
         klass.build(value).each do |x|
           s = ::RDF::Node.new
-          graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], s]
+          graph << [subject, ClinVar::RDF::Vocab[value.first.keys.first.underscore], s]
           graph << x.subject(s)
         end
       end
