@@ -50,8 +50,8 @@ RSpec.describe ClinVar::RDF::Model::VariationArchiveType do
           .to_rdf
       end
 
-      let (:g) { @graph }
       let (:subject) { @subject }
+      let (:g) { @graph }
 
       it 'should be VariationArchiveType' do
         expect(g.query(subject: subject, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:VariationArchiveType])
@@ -79,10 +79,7 @@ RSpec.describe ClinVar::RDF::Model::VariationArchiveType do
 
       # element / complex type
       it 'should have interpreted record' do
-        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:interpreted_record]).first_object
-
-        expect(result).to be_kind_of(RDF::Node)
-        expect(g.query(subject: result, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:InterpretedRecord])
+        expect(g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:interpreted_record]).first_object).to be_kind_of(RDF::Node)
       end
 
     end
