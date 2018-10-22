@@ -49,6 +49,52 @@ RSpec.describe ClinVar::RDF::Model::InterpretedRecord do
         expect(g.query(subject: subject, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:InterpretedRecord])
       end
 
+      # element / complex type
+      it 'should have simple allele' do
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:simple_allele]).first_object
+
+        expect(result).to be_kind_of(RDF::Node)
+        expect(g.query(subject: result, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:TypeAllele])
+      end
+
+      # element / literal
+      it 'should have review status' do
+        expect(g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:review_status]).first_object).to eq(RDF::Literal.new('no assertion criteria provided'))
+      end
+
+      # element / complex type
+      it 'should have rcv list' do
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:rcv_list]).first_object
+
+        expect(result).to be_kind_of(RDF::Node)
+        expect(g.query(subject: result, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:RCVList])
+      end
+
+      # element / array type
+      it 'should have interpretations' do
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:interpretation]).first_object
+
+        expect(result).to be_kind_of(RDF::Node)
+        expect(g.query(subject: result, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:TypeAggregatedInterpretation])
+      end
+
+      # element / array type
+      it 'should have clinical assertion list' do
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:clinical_assertion]).first_object
+
+        expect(result).to be_kind_of(RDF::Node)
+        expect(g.query(subject: result, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:MeasureTraitType])
+      end
+
+      # element / array type
+      it 'should have trait mapping list' do
+        # result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:trait_mapping_list]).first_object
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:trait_mapping]).first_object
+
+        expect(result).to be_kind_of(RDF::Node)
+        expect(g.query(subject: result, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:TraitMapping])
+      end
+
     end
 
   end
