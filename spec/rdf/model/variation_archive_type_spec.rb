@@ -27,14 +27,6 @@ RSpec.describe ClinVar::RDF::Model::VariationArchiveType do
 
   end
 
-  describe '#to_rdf' do
-
-    it 'should return an instance of RDF::Graph' do
-      expect(ClinVar::RDF::Model::VariationArchiveType.new.to_rdf).to be_kind_of(RDF::Graph)
-    end
-
-  end
-
   describe 'RDF::Graph' do
 
     context 'variation_archive_20180705.xsd' do
