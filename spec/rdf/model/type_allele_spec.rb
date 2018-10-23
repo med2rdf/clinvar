@@ -71,6 +71,19 @@ RSpec.describe ClinVar::RDF::Model::TypeAllele do
         expect(result).to include(RDF::Literal.new('NM_000690.3(ALDH2):c.1510G>A (p.Glu504Lys)'))
       end
 
+      # element / complex type
+      it 'should have other names' do
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:name]).map(&:object)
+
+        other_names = result.select { |x| x.is_a?(RDF::Node) }.map { |s| g.query(subject: s, predicate: ClinVar::RDF::Vocab[:name]).map(&:object) }.flatten
+        expect(other_names.size).to be(3)
+        expect(other_names).to contain_exactly(RDF::Literal.new('ALDH2*2'), RDF::Literal.new('ALDH2, GLU504LYS (rs671)'), RDF::Literal.new('GLU487LYS'))
+
+        klass = result.select { |x| x.is_a?(RDF::Node) }.map { |s| g.query(subject: s, predicate: RDF.type).map(&:object) }.flatten.uniq
+        expect(klass.size).to be(1)
+        expect(klass.first).to eq(ClinVar::RDF::Vocab[:Name])
+      end
+
     end
 
   end
