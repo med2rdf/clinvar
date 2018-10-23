@@ -38,7 +38,7 @@ RSpec.describe ClinVar::RDF::Model::VariationArchiveType do
 
         @graph = ClinVar::RDF::Model::VariationArchiveType
           .build(record)
-          .subject(RDF::URI.new('http://example.com/VCV000018390'))
+          .subject(@subject)
           .to_rdf
       end
 
