@@ -49,6 +49,28 @@ RSpec.describe ClinVar::RDF::Model::TypeAllele do
         expect(g.query(subject: subject, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:TypeAllele])
       end
 
+      # attribute / integer
+      it 'should have allele ID' do
+        expect(g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:allele_id]).first_object).to eq(RDF::Literal::Integer.new(33429))
+      end
+
+      # attribute / integer
+      it 'should have variation ID' do
+        expect(g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:variation_id]).first_object).to eq(RDF::Literal::Integer.new(18390))
+      end
+
+      # element / string
+      it 'should have variant type' do
+        expect(g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:variant_type]).first_object).to eq(RDF::Literal.new('single nucleotide variant'))
+      end
+
+      # element / string
+      it 'should have name' do
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:name]).map(&:object)
+
+        expect(result).to include(RDF::Literal.new('NM_000690.3(ALDH2):c.1510G>A (p.Glu504Lys)'))
+      end
+
     end
 
   end
