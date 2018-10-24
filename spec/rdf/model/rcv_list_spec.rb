@@ -49,6 +49,17 @@ RSpec.describe ClinVar::RDF::Model::InterpretedRecord::RCVList do
         expect(g.query(subject: subject, predicate: RDF.type).first_object).to eq(ClinVar::RDF::Vocab[:RCVList])
       end
 
+      # element / complex type
+      it 'should have RCV Accessions' do
+        result = g.query(subject: subject, predicate: ClinVar::RDF::Vocab[:rcv_accession]).map(&:object)
+
+        expect(result.size).to be(5)
+
+        klass = result.select { |x| x.is_a?(RDF::Node) }.map { |s| g.query(subject: s, predicate: RDF.type).map(&:object) }.flatten.uniq
+        expect(klass.size).to be(1)
+        expect(klass.first).to eq(ClinVar::RDF::Vocab[:TypeRCV])
+      end
+
     end
 
   end
