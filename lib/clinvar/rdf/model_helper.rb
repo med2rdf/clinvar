@@ -1,8 +1,8 @@
 require 'active_support'
 require 'active_support/core_ext/string'
+require 'clinvar/xml/patch'
 require 'rdf'
 require 'soap/baseData'
-require 'xsd/codegen/gensupport'
 
 # Namespace for ClinVar
 module ClinVar
@@ -189,44 +189,5 @@ class Object
     end
   rescue
     nil
-  end
-end
-
-class Symbol
-  def underscore
-    to_s.underscore
-  end
-
-  def scan(*args)
-    to_s.scan(*args)
-  end
-end
-
-module XSD
-  module CodeGen
-    module GenSupport
-      def safemethodname(name)
-        name     = name.underscore
-        postfix  = name[/[=?!]$/]
-        safename = name.scan(/[a-zA-Z0-9_]+/).join('_')
-        safename = uncapitalize(safename)
-        safename += postfix if postfix
-        if /\A[a-z]/ !~ safename or keyword?(safename)
-          "m_#{safename}"
-        else
-          safename
-        end
-      end
-
-      def safevarname(name)
-        name     = name.underscore
-        safename = uncapitalize(name.scan(/[a-zA-Z0-9_]+/).join('_'))
-        if /\A[a-z]/ !~ safename or keyword?(safename)
-          "v_#{safename}"
-        else
-          safename
-        end
-      end
-    end
   end
 end
