@@ -178,7 +178,9 @@ end
 
 class Object
   def cast(klass)
-    if klass.ancestors.include?(XSD::XSDDate)
+    if klass.ancestors.include?(XSD::XSDString)
+      ::RDF::Literal.new(self)
+    elsif klass.ancestors.include?(XSD::XSDDate)
       ::RDF::Literal::Date.new(self)
     elsif klass.ancestors.include?(XSD::XSDInteger)
       ::RDF::Literal::Integer.new(self)
