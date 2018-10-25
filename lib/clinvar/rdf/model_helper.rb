@@ -92,6 +92,7 @@ module ClinVar
 
           process_attributes(g, subject)
           process_elements(g, subject)
+          process_content(g, subject)
         end
       end
 
@@ -118,6 +119,12 @@ module ClinVar
             process_object(v, graph, subject, key, klass)
           end
         end
+      end
+
+      def process_content(graph, subject)
+        return unless is_a? String
+
+        graph << [subject, ClinVar::RDF::Vocab[self.class.name.demodulize.underscore], to_s]
       end
 
       def process_simple_type(value, graph, subject, element_name, klass)
