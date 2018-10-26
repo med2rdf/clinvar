@@ -68,7 +68,7 @@ module ClinVar
           elsif respond_to?("#{varname}=")
             send("#{varname}=", v)
           else
-            raise("Failed to find setter for #{k}")
+            ClinVar::RDF.logger&.warn("#{k} does not found in #{self.class}: #{hash}")
           end
         end
 
