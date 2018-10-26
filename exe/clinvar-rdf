@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
 require 'clinvar/rdf'
+
+ClinVar::RDF::CLI::Runner.new.run
