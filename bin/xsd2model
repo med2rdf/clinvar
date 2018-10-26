@@ -3,12 +3,8 @@
 require 'bundler/setup'
 require 'clinvar/rdf'
 
-input = ARGV[0]
-output = File.expand_path('../../lib/clinvar/rdf/model.rb', __FILE__)
+input = ARGV[0] || raise('usage: xsd2model <xsd file>')
 
 raise('File not found') unless File.exist?(input)
 
-File.open(output, 'w') do |f|
-  f << ClinVar::XML::XSD.open(input) { |xsd| xsd.to_ruby }
-  STDERR.puts "wrote to #{output}"
-end
+puts ClinVar::XML::XSD.open(input) { |xsd| xsd.to_ruby }
