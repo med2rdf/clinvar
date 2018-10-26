@@ -5,6 +5,12 @@ module ClinVar
 
   # Namespace for ClinVar::RDF
   module RDF
+    class << self
+      def logger
+        @logger ||= Logger.new(STDERR)
+      end
+    end
+
     require 'clinvar/rdf/vocab'
 
     # Namespace for ClinVar::RDF::CLI
