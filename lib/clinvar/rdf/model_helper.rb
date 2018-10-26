@@ -43,7 +43,12 @@ module ClinVar
               hash.each do |_, v|
                 raise unless v.is_a? Array
                 v.each do |x|
-                  obj << obj.class.element_type.build(x)
+                  type = obj.class.element_type
+                  if type.respond_to?(:build)
+                    obj << type.build(x)
+                  else
+                    obj << x
+                  end
                 end
               end
             end
@@ -158,8 +163,13 @@ module ClinVar
       def process_array(value, graph, subject, element_name, klass)
         klass.build(value).each do |x|
           s = ::RDF::Node.new
-          graph << [subject, ClinVar::RDF::Vocab[value.first.keys.first.underscore], s]
-          graph << x.subject(s)
+          if x.respond_to?(:subject)
+            graph << [subject, ClinVar::RDF::Vocab[value.first.keys.first.underscore], s]
+            graph << x.subject(s)
+          else
+            graph << [subject, ClinVar::RDF::Vocab[value.first.keys.first.underscore], x]
+          end
+
         end
       end
 
