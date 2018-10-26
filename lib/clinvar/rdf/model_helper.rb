@@ -76,6 +76,8 @@ module ClinVar
       end
 
       def subject(uri = nil)
+        return @__subject__ if uri.nil?
+
         @__subject__ = if uri.is_a?(::RDF::Node)
                          uri
                        else
@@ -85,14 +87,14 @@ module ClinVar
       end
 
       def to_rdf
-        subject = @__subject__ || ::RDF::Node.new
+        s = subject || ::RDF::Node.new
 
         ::RDF::Graph.new do |g|
           g << [subject, ::RDF.type, ClinVar::RDF::Vocab[self.class.to_s.demodulize]]
 
-          process_attributes(g, subject)
-          process_elements(g, subject)
-          process_content(g, subject)
+          process_attributes(g, s)
+          process_elements(g, s)
+          process_content(g, s)
         end
       end
 
