@@ -81,7 +81,7 @@ module ClinVar
           parentmodule = mapped_class_name(qname, mpath)
           type         = collect_attribute_type(typedef.elements, parentmodule).first
 
-          c.def_method('self.element_type') { type[1] == '(any)' ? 'SOAP::SOAPAnySimpleType' : type[1] }
+          c.def_method('self.element_type') { type[1] }
 
           c
         end
@@ -121,7 +121,7 @@ module ClinVar
               name     = name_element(element).name
               typebase = (element.anonymous_type? ? mpath : @modulepath)
               attrname = safemethodname(name)
-              result << [attrname, create_type_name(typebase, element) || 'SOAP::SOAPAnySimpleType']
+              result << [attrname, create_type_name(typebase, element) || '(any)']
             when WSDL::XMLSchema::Sequence,
               WSDL::XMLSchema::Choice,
               WSDL::XMLSchema::Group
