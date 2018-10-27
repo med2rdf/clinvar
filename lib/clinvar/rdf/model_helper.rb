@@ -28,8 +28,6 @@ module ClinVar
                     args.first['content']
                   elsif args.first.is_a? String
                     args.first
-                  else
-                    raise "#{obj.class} #{args.first}"
                   end
             obj = new(arg)
             if args.first.is_a?(Hash)
@@ -131,7 +129,9 @@ module ClinVar
       def process_content(graph, subject)
         return unless is_a? String
 
-        graph << [subject, ClinVar::RDF::Vocab[self.class.name.demodulize.underscore], to_s]
+        if self.present?
+          graph << [subject, ClinVar::RDF::Vocab[self.class.name.demodulize.underscore], self]
+        end
       end
 
       def process_simple_type(value, graph, subject, element_name, klass)
