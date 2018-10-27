@@ -24,8 +24,12 @@ module ClinVar
           obj = new
 
           if obj.is_a? String
-            arg = if args.first.is_a?(Hash) && args.first.key?('content')
-                    args.first['content']
+            arg = if args.first.is_a?(Hash)
+                    if args.first.key?('content')
+                      args.first['content']
+                    else
+                      ''
+                    end
                   elsif args.first.is_a? String
                     args.first
                   end
