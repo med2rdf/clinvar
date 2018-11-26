@@ -1,6 +1,6 @@
 require 'rdf'
-# require 'rdf/raptor'
 require 'rdf/turtle'
+require 'rdf/raptor'
 
 require 'clinvar/rdf/refiner'
 
