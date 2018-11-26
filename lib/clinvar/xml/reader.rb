@@ -24,11 +24,7 @@ module ClinVar
       def each
         if block_given?
           while (record = shift)
-            # begin
-              yield self.class.parse(record)
-            # rescue StandardError => e
-            #   raise ParseError, "#{e.message} at line #{@lineno}, #{record}"
-            # end
+            yield self.class.parse(record)
           end
         else
           to_enum
