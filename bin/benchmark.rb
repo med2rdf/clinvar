@@ -9,6 +9,7 @@ require 'xmlsimple'
 
 require 'clinvar/rdf/refiner'
 
+require 'clinvar/rdf/turtle/writer'
 puts RDF::Writer.for(:ttl)
 
 io = StringIO.new
