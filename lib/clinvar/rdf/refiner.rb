@@ -272,7 +272,7 @@ module ClinVar
           graph << [bn, FALDO.position, position]
 
           if xmlattr_accession.present?
-            graph << [bn, FALDO.reference, ::RDF::URI.new(REFSEQ_ID_BASE % xmlattr_accession)]
+            graph << [bn, FALDO.reference, ::RDF::URI.new(REFSEQ_ID_BASE + xmlattr_accession)]
 
             if (hco = refseq2hco(xmlattr_accession, xmlattr_assembly))
               graph << [bn, FALDO.reference, hco]
