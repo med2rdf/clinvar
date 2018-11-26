@@ -5,9 +5,13 @@ require 'clinvar/rdf'
 
 require 'benchmark'
 require 'rdf'
-require 'rdf/raptor'
 require 'xmlsimple'
 
+require 'clinvar/rdf/refiner'
+
+puts RDF::Writer.for(:ttl)
+
+io = StringIO.new
 Benchmark.bm(7) do |x|
 
   record = nil
@@ -15,21 +19,17 @@ Benchmark.bm(7) do |x|
     record = XmlSimple.xml_in(File.read('spec/sample/VCV000018390.xml'))
   end
 
-  base    = 'http://identifiers.org/clinvar:'
-  subject = RDF::URI.new(base + '000018390')
-
   model = nil
   x.report('build:') do
-    model = ClinVar::RDF::Model::VariationArchiveType.build(record).subject(subject)
+    model = ClinVar::RDF::Model::VariationArchiveType.build(record)
   end
 
-  puts RDF::Writer.for(:ttl)
   x.report('buffer:') do
-    RDF::Writer.for(:ttl).buffer(base_uri: base, prefixes: {
-      cvo: 'http://purl.jp/bio/10/clinvar/',
-      xsd: 'http://www.w3.org/2001/XMLSchema#'
-    }) do |writer|
+    ClinVar::RDF::Turtle::Writer.new(io) do |writer|
       writer << model
     end
   end
+
 end
+
+puts io.string
