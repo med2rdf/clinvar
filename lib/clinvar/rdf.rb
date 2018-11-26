@@ -41,6 +41,6 @@ files = Dir[File.join(root, '*.xsd')]
 raise("File *.xsd does not found in #{root}") if files.empty?
 
 model = ClinVar::XML::XSD.open(files.last) { |xsd| xsd.to_ruby }
-STDERR.puts "XML Schema: #{File.basename(files.last)}{"
+STDERR.puts "XML Schema: #{File.basename(files.last)}"
 
 eval(model)
