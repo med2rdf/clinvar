@@ -146,6 +146,18 @@ module ClinVar
         def to_rdf
           graph = super
 
+          alternate_allele = graph.select { |s| s.predicate == Vocab[:alternate_allele] || s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq
+          reference_allele = graph.select { |s| s.predicate == Vocab[:reference_allele] || s.predicate == Vocab[:reference_allele_vcf] }.map { |s| s.object.to_s }.uniq
+
+          s = subject
+
+          alternate_allele.each do |x|
+            graph << [s, M2R[:alternative_allele], x]
+          end
+          reference_allele.each do |x|
+            graph << [s, M2R[:reference_allele], x]
+          end
+
           graph.query([nil, Vocab[:sequence_location], nil]).each do |statement|
             graph << [statement.subject, FALDO[:location], statement.object]
             graph.delete(statement)
