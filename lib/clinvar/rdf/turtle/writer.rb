@@ -16,6 +16,7 @@ module ClinVar
           dc:        ::RDF::Vocab::DC.to_uri,
           faldo:     FALDO.to_uri,
           hco:       HCO.to_uri,
+          m2r:       M2R.to_uri,
           rdfs:      ::RDF::Vocab::RDFS.to_uri,
           xsd:       ::RDF::XSD.to_uri,
           rcv:       RCV_ID_BASE,

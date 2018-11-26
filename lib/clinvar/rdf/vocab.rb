@@ -12,6 +12,7 @@ module ClinVar
 
     FALDO = ::RDF::Vocabulary.new('http://biohackathon.org/resource/faldo#')
     HCO   = ::RDF::Vocabulary.new('http://identifiers.org/hco/')
+    M2R   = ::RDF::Vocabulary.new('http://med2rdf.org/ontology/med2rdf#')
 
     class Vocab < ::RDF::Vocabulary('http://purl.jp/bio/10/clinvar/')
     end
