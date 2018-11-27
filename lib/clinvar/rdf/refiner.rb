@@ -147,16 +147,20 @@ module ClinVar
           graph = super
 
           ref = nil
-          if (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq.first)
+          if (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq).present?
             ref = graph.select { |s| s.predicate == Vocab[:reference_allele_vcf] }.map { |s| s.object.to_s }.uniq
-          elsif (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele] }.map { |s| s.object.to_s }.uniq.first)
+          elsif (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele] }.map { |s| s.object.to_s }.uniq).present?
             ref = graph.select { |s| s.predicate == Vocab[:reference_allele] }.map { |s| s.object.to_s }.uniq
           end
 
           s = subject
 
-          graph << [s, M2R[:alternative_allele], alt] if alt.present?
-          graph << [s, M2R[:reference_allele], ref] if ref.present?
+          alt.each do |x|
+            graph << [s, M2R[:alternative_allele], x]
+          end
+          ref.each do |x|
+            graph << [s, M2R[:reference_allele], x]
+          end
 
           graph.query([nil, Vocab[:sequence_location], nil]).each do |statement|
             graph << [statement.subject, FALDO[:location], statement.object]
