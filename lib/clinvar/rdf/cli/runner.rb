@@ -7,8 +7,6 @@ module ClinVar
   module RDF
     module CLI
 
-      PROG_NAME = 'clinvar-rdf'.freeze
-
       class Runner
         def run
           command = ARGV.shift || '--help'
@@ -42,9 +40,7 @@ module ClinVar
 
         def help
           <<-USAGE.strip_heredoc % commands.map { |c| "    #{c}" }.join("\n")
-          Usage: #{PROG_NAME} [command] [options] [arguments]
-  
-          RDF Converter for ClinVar
+          Usage: #{File.basename($0, '.*')} [command]
   
           Commands:
           %s
@@ -53,7 +49,7 @@ module ClinVar
               -h, --help                       show help
               -v, --version                    print version
   
-          Run '#{PROG_NAME} COMMAND --help' for more information on a command
+          Run '#{File.basename($0, '.*')} COMMAND --help' for more information on a command
           USAGE
         end
       end
