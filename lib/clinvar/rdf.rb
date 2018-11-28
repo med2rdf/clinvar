@@ -24,6 +24,11 @@ module ClinVar
       autoload :Writer, 'clinvar/rdf/turtle/writer'
     end
 
+    files = Dir[File.expand_path('../../../*.xsd', __FILE__)]
+    raise("No *.xsd files found") if files.empty?
+    SCHEMA_XSD = files.first
+
+    autoload :Model, 'clinvar/rdf/model'
     autoload :ModelHelper, 'clinvar/rdf/model_helper'
   end
 
@@ -34,13 +39,3 @@ module ClinVar
   end
 
 end
-
-# load data model dynamically
-root  = File.expand_path('../../../', __FILE__)
-files = Dir[File.join(root, '*.xsd')]
-raise("File *.xsd does not found in #{root}") if files.empty?
-
-model = ClinVar::XML::XSD.open(files.last) { |xsd| xsd.to_ruby }
-STDERR.puts "XML Schema: #{File.basename(files.last)}"
-
-eval(model)
