@@ -1,11 +1,14 @@
 require 'optparse'
 
+$VERBOSE = nil
+
 module ClinVar
   module RDF
     module CLI
       class Convert
 
-        DEFAULT_OPTIONS = { help: false }.freeze
+        DEFAULT_OPTIONS = { xsd:  nil,
+                            help: false }.freeze
 
         def initialize
           @options = Hash[DEFAULT_OPTIONS]
@@ -18,6 +21,8 @@ module ClinVar
             STDERR.puts option_parser.help
             exit 0
           end
+
+          validate
 
           Turtle::Writer.new do |writer|
             XML::Reader.new.each { |data| writer << data }
@@ -42,6 +47,9 @@ module ClinVar
             op.separator('')
             op.separator('Options:')
 
+            op.on('--xsd <FILE>', 'XSD schema') do |x|
+              @options[:xsd] = x
+            end
 
             op.on('-h', '--help', 'show help') do
               @options[:help] = true
@@ -50,6 +58,10 @@ module ClinVar
             op.separator('')
             op.separator("#{op.program_name} #{ClinVar::RDF::VERSION}")
           end
+        end
+
+        def validate
+          raise(OptionParser::MissingArgument, '--xsd <FILE>') if @options[:xsd].nil?
         end
       end
     end
