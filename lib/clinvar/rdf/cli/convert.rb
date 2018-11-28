@@ -37,15 +37,18 @@ module ClinVar
 
         def option_parser
           OptionParser.new do |op|
-            op.banner = "Usage: #{ClinVar::RDF::CLI::PROG_NAME} #{self.class.name.demodulize.underscore}\n"
-            op.banner += "Convert ClinVar data to RDF\n"
+            op.banner = "Usage: #{op.program_name} #{self.class.name.demodulize.underscore} [options]"
 
-            op.separator("\nOptions:")
+            op.separator('')
+            op.separator('Options:')
+
+
             op.on('-h', '--help', 'show help') do
               @options[:help] = true
             end
 
             op.separator('')
+            op.separator("#{op.program_name} #{ClinVar::RDF::VERSION}")
           end
         end
       end
