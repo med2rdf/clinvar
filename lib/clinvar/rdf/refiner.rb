@@ -146,7 +146,7 @@ module ClinVar
         def to_rdf
           graph = super
 
-          ref = nil
+          ref = []
           if (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq).present?
             ref = graph.select { |s| s.predicate == Vocab[:reference_allele_vcf] }.map { |s| s.object.to_s }.uniq
           elsif (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele] }.map { |s| s.object.to_s }.uniq).present?
