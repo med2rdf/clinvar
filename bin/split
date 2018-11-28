@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+
+set -eu
+
+ENTRIES_PER_FILE=10000
+
+usage() {
+  echo 'usage: split <xml_path>'
+}
+
+xml_path=$1
+
+: ${xml_path:?cannot be empty.}
+
+PREFIX=${PREFIX:-.}
+BASENAME=$(basename "$xml_path")
+WITHOUT_EXTENSION=${BASENAME%%.*}
+
+PROLOGUE=
+
+if [ "$(uname)" == 'Darwin' ]; then
+  TAC='tail -r'
+elif [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+  TAC='tac'
+else
+  echo "not supported: $(uname -a)"
+  exit 1
+fi
+
+write_prologue() {
+  echo -en "$PROLOGUE"
+}
+
+write_epilogue() {
+  echo -en "$PROLOGUE" | eval "$TAC" | sed 's|\(\s*\)<\(\w\+\).*>|\1</\2>|g'
+}
+
+file_rotate() {
+  local index="$1"
+
+  [ "$index" -ne 1 ] && write_epilogue && exec 1>&-
+
+  exec 1> >(gzip -c > "${PREFIX}/${WITHOUT_EXTENSION}_${index}.xml.gz")
+
+  write_prologue
+}
+
+START_REGEX='[[:space:]]*<VariationArchive[[:space:]]+'
+END_REGEX='[[:space:]]*</VariationArchive>'
+
+#
+# main
+#
+state=0
+file_index=1
+count=0
+
+IFS=''
+
+[[ "$xml_path" =~ \.gz$ ]] && exec < <(zcat "$xml_path") || exec < "$xml_path"
+while read line; do
+  if [ "$state" -eq 0 ]; then
+    if [[ "$line" =~ $START_REGEX ]]; then
+      state=1
+      file_rotate ${file_index}
+      echo "$line"
+    else
+      PROLOGUE="${PROLOGUE}${line}\n"
+    fi
+  else
+    if [[ "$line" =~ $END_REGEX ]]; then
+      state=2
+      echo "$line"
+      count=$((++count))
+      if [ "$count" -ge "$ENTRIES_PER_FILE" ]; then
+        file_index=$((++file_index))
+        file_rotate "$file_index"
+        count=0
+      fi
+    elif [[ "$line" =~ $START_REGEX ]]; then
+      state=1
+    fi
+
+    [ "$state" -eq 1 ] && echo "$line"
+  fi
+done
+
+write_epilogue && exec 1>&-
+
+[ "$count" -eq 0 ] && rm "${PREFIX}/${WITHOUT_EXTENSION}_${file_index}.xml.gz"
