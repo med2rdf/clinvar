@@ -24,6 +24,8 @@ module ClinVar
 
           validate
 
+          ClinVar::RDF.const_set(:SCHEMA_XSD, @options[:xsd].freeze)
+
           Turtle::Writer.new do |writer|
             XML::Reader.new.each { |data| writer << data }
           end
