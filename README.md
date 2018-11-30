@@ -1,34 +1,70 @@
 # ClinVar::RDF
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/clinvar`. To experiment with that code, run `bin/console` for an interactive prompt.
+ClinVar XML to RDF Converter
 
-TODO: Delete this and the text above, and describe your gem
+## Requirements
+
+- Docker
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'clinvar-rdf'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install clinvar-rdf
+```bash
+$ docker build --tag clinvar-rdf .
+``` 
 
 ## Usage
 
-TODO: Write usage instructions here
+### Preparation
 
-## Development
+Fill "[yyyymmdd]" below with latest release date listed at [ClinVar FTP site](ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/clinvar_variation/beta/). 
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+```bash
+mkdir clinvar_[yyyymmdd]
+cd $_
+wget ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/clinvar_variation/beta/variation_archive_[yyyymmdd].xsd
+wget ftp://ftp.ncbi.nlm.nih.gov/pub/clinvar/xml/clinvar_variation/beta/variation_archive_[yyyymmdd].xml.gz
+```
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+It is recommended to divide the xml into several pieces to reduce processing time.
+
+#### Split large XML file
+
+Check if you are at working directory   
+
+```bash
+pwd
+# => /.../clinvar_[yyyymmdd]
+```
+
+then
+
+```bash
+docker run --rm -v $(pwd):/data clinvar-rdf /clinvar-rdf/bin/split $(ls variation_archive_*.xml.gz)
+```
+
+The XML will be splitted each 10,000 records. 
+
+### Conversion
+
+Check target files
+
+```bash
+ls variation_archive_*_*.xml.gz
+# => variation_archive_[yyyymmdd]_1.xsd  variation_archive_[yyyymmdd]_2.xsd  ...
+```
+
+Ensure there is only one xsd file in the directory
+
+```bash
+ls *.xsd
+# => variation_archive_[yyyymmdd].xsd
+```
+
+Execute with 10 parallel processes
+
+```bash
+ls variation_archive_*_*.xml.gz | xargs -n1 -P10 -I{} bash -c "f={}; zcat \${f} | docker run --rm -i -v $(pwd):/data clinvar-rdf convert --xsd $(ls *.xsd) 2>\${f%%.*}.log | gzip -c >\${f%%.*}.ttl.gz"
+```
 
 ## Contributing
 
