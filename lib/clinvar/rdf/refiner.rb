@@ -54,7 +54,7 @@ module ClinVar
           id = xmlattr_variation_id&.to_s || xmlattr_accession&.match(/VCV(\d+)/)&.[](1)
 
           if id.present?
-            graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(VCV_ID_BASE + id)]
+            graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(CLINVAR_ID_BASE + id)]
           end
 
           graph
@@ -90,7 +90,7 @@ module ClinVar
                 uri
               else
                 id = xmlattr_variation_id&.to_s || xmlattr_accession&.match(/VCV(\d+)/)&.[](1)
-                ::RDF::URI.new(VCV_ID_BASE + id)
+                ::RDF::URI.new(CLINVAR_ID_BASE + id)
               end
             end
 

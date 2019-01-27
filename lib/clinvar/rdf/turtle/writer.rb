@@ -10,7 +10,6 @@ module ClinVar
 
       class Writer
 
-        BASE_URI = VCV_ID_BASE
         PREFIXES = {
           cvo:       Vocab.to_uri,
           dc:        ::RDF::Vocab::DC.to_uri,
@@ -19,12 +18,12 @@ module ClinVar
           m2r:       M2R.to_uri,
           rdfs:      ::RDF::Vocab::RDFS.to_uri,
           xsd:       ::RDF::XSD.to_uri,
-          rcv:       RCV_ID_BASE,
-          scv:       SCV_ID_BASE,
-          vcv:       VCV_ID_BASE,
           hbnc:      HGNC_ID_BASE,
           ncbi_gene: NCBI_GENE_ID_BASE,
-          refseq:    REFSEQ_ID_BASE
+          refseq:    REFSEQ_ID_BASE,
+          clinvar:   CLINVAR_ID_BASE,
+          rcv:       RCV_ID_BASE,
+          scv:       SCV_ID_BASE
         }
 
         class << self
@@ -55,8 +54,7 @@ module ClinVar
           yield self if block_given?
         end
 
-        OPTIONS = { base_uri: BASE_URI,
-                    prefixes: PREFIXES }
+        OPTIONS = { prefixes: PREFIXES }
 
         # @param  [RDF::Enumerable, RDF::Statement, #to_rdf] data
         # @return [Integer] the number of bytes written

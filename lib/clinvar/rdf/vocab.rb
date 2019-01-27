@@ -3,9 +3,9 @@ require 'rdf'
 module ClinVar
   module RDF
 
+    CLINVAR_ID_BASE       = 'http://identifiers.org/clinvar:'.freeze
     RCV_ID_BASE       = 'http://identifiers.org/clinvar.record:'.freeze
     SCV_ID_BASE       = 'http://identifiers.org/clinvar.submission:'.freeze
-    VCV_ID_BASE       = 'http://identifiers.org/clinvar:'.freeze
     HGNC_ID_BASE      = 'http://identifiers.org/hgnc/'.freeze
     NCBI_GENE_ID_BASE = 'http://identifiers.org/ncbigene/'.freeze
     REFSEQ_ID_BASE    = 'http://identifiers.org/refseq/'.freeze
