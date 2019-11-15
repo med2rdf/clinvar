@@ -11,8 +11,11 @@ module ClinVar
       class Writer
 
         PREFIXES = {
+          clinvar:   CLINVAR_ID_BASE,
           cvo:       Vocab.to_uri,
           dc:        ::RDF::Vocab::DC.to_uri,
+          prism:     PRISM.to_uri,
+          so:        SO.to_uri,
           faldo:     FALDO.to_uri,
           hco:       HCO.to_uri,
           m2r:       M2R.to_uri,
@@ -23,7 +26,15 @@ module ClinVar
           refseq:    REFSEQ_ID_BASE,
           clinvar:   CLINVAR_ID_BASE,
           rcv:       RCV_ID_BASE,
-          scv:       SCV_ID_BASE
+          scv:       SCV_ID_BASE,
+          uniprot:   UNIPROT_BASE,
+          omim:      OMIM_BASE,
+          bibo:      ::RDF::Vocab::BIBO.to_uri,
+          obo:       OBO_BASE,
+          orpha:     ORPHA_BASE,
+          ghr:       GHR_BASE,
+          gard:      GARD_BASE,
+          tsc:       TSC_BASE
         }
 
         class << self

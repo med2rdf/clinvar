@@ -10,6 +10,64 @@ module ClinVar
     # Namespace for ClinVar::RDF::Refiner
     module Refiner
 
+      $gene_hash = Hash.new
+
+
+      module InterpretedRecordRefine
+        def to_rdf
+          graph = super
+
+         graph << [subject, ::RDF.type, SIO[:SIO_001122]]
+         graph.query([subject, Vocab[:interpretation], nil]).each do |statement|
+           graph << [subject, SIO[:SIO_000255], statement.object]
+           graph << [statement.object, ::RDF.type, SIO[:SIO_000897]]
+           graph.delete(statement)
+         end
+         graph.query([subject, Vocab[:simple_allele], nil]).each do |statement|
+           graph << [subject, SIO[:SIO_000628], statement.object]
+           graph.delete(statement)
+         end
+
+         # Model specific refinement for TraitMapping
+          graph.query([nil, Vocab[:trait_mapping], nil]).each do |statement|
+            graph << [ statement.subject, SIO[:SIO_000628], statement.object]
+            graph.query([statement.object, nil, nil]).each do |data|
+              case data.predicate
+              when Vocab[:mapping_ref]
+                graph << [data.subject, Vocab[:label_type], data.object]
+              when Vocab[:mapping_value]
+                graph << [data.subject, ::RDF::Vocab::RDFS.label, data.object]
+              when Vocab[:trait_type]
+                if data.object.to_s == "Disease"
+                  graph << [data.subject, ::RDF.type, M2R[:Disease]]
+                end
+              when Vocab[:med_gen]
+                graph << [data.subject, ::RDF::Vocab::DC.references, data.object]
+                graph.query([data.object, nil, nil]).each do |refer|
+                  case refer.predicate
+                  when Vocab[:cui]
+                    graph << [refer.subject, ::RDF::Vocab::DC.identifier, refer.object]
+                    graph << [refer.subject, ::RDF::Vocab::DC.source, "MedGen"]
+                    graph << [refer.subject, ::RDF.type, ::RDF::Vocab::BIBO.Webpage]
+                    graph << [refer.subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(NCBI_BASE + "medgen/" + refer.object.to_s)]
+                  when Vocab[:name]
+                    graph << [refer.subject, ::RDF::Vocab::RDFS.label, refer.object]
+                  end
+                  graph.delete(refer)
+                end
+              end
+              if data.predicate != ::RDF.type
+                graph.delete(data)
+              end
+            end
+            graph.delete(statement)
+          end
+
+          graph
+        end
+        Model::InterpretedRecord.prepend self
+      end
+
       # Attribute specific refinement for RCV accession
       module RCVAccessionInsert
 
@@ -45,8 +103,90 @@ module ClinVar
         Model::MeasureTraitType::ClinVarAccession.prepend self
       end
 
+      module LocationRefine
+
+        def to_rdf
+          graph = super
+
+          ref = []
+          if (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq).present?
+            ref = graph.select { |s| s.predicate == Vocab[:reference_allele_vcf] }.map { |s| s.object.to_s }.uniq
+          elsif (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele] }.map { |s| s.object.to_s }.uniq).present?
+            ref = graph.select { |s| s.predicate == Vocab[:reference_allele] }.map { |s| s.object.to_s }.uniq
+          end
+
+          s = subject
+
+          alt.each do |x|
+            graph << [s, M2R[:alternative_allele], x]
+          end
+          ref.each do |x|
+            graph << [s, M2R[:reference_allele], x]
+          end
+
+          graph.query([subject,Vocab[:location],nil]).each do |lstatement|
+            graph.query([lstatement.object, nil, nil]).each do |statement|
+              case statement.predicate
+              when Vocab[:sequence_location]
+                graph << [subject, FALDO[:location], statement.object]
+              when ::RDF.type
+                nil
+              else
+                graph << [subject, statement.predicate, statement.object]
+              end
+              graph.delete(statement)
+            end
+            graph.delete(lstatement)
+          end
+
+          graph << [subject, ::RDF.type, M2R[:Variation]]
+
+          graph
+        end
+
+        Model::TypeAllele.prepend self
+        Model::TypeAlleleSCV.prepend self
+        Model::TypeAllele::GeneList::Gene.prepend self
+        Model::TypeAlleleSCV::GeneList::Gene.prepend self
+      end
+
       # Attribute specific refinement for VCV accession
       module VCVAccessionInsert
+
+        def get_link(cid,cdb,label)
+                case cdb
+                when "ClinVar"
+                  return ::RDF::URI.new(CLINVAR_ID_BASE + cid)
+                when "dbVar"
+                  return ::RDF::URI.new(NCBI_BASE + "dbvar/variants/" + cid)
+                when "MedGen"
+                  return ::RDF::URI.new(NCBI_BASE + "medgen/" + cid)
+                when "OMIM"
+                  return ::RDF::URI.new(OMIM_BASE + cid.gsub(/\..+$/,""))
+                when "Orphanet"
+                  return ::RDF::URI.new(ORPHA_BASE + cid)
+                when "dbSNP"
+                  return ::RDF::URI.new(NCBI_BASE + "snp/rs" + cid)
+                when "UniProtKB"
+                  return ::RDF::URI.new(UNIPROT_BASE + cid)
+                when "Genetics Home Reference"
+                  return ::RDF::URI.new(GHR_BASE + "condition/" + cid)
+                when "Variation Ontology"
+                  return ::RDF::URI.new(OBO_BASE + "VariO_" + cid)
+                when "GeneReviews"
+                  return ::RDF::URI.new(NCBI_BASE + "bookshelf/" + cid)
+                when "Genetic Testing Registry (GTR)"
+                  return ::RDF::URI.new(NCBI_BASE + "gtr/tests/" + cid)
+                when "Tuberous sclerosis database (TSC2)"
+                  return ::RDF::URI.new(TSC_BASE + "variants.php?select_db=TSC2&action=search_unique&search_Variant/DBID=" + cid)
+                when "Office of Rare Diseases"
+                  if label != nil
+                    label = label.gsub(/ /,"-")
+                    return ::RDF::URI.new(GARD_BASE + cid + "/" + label)
+                  end
+                end
+                return nil
+        end
 
         def to_rdf
           graph = super
@@ -55,6 +195,97 @@ module ClinVar
 
           if id.present?
             graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(CLINVAR_ID_BASE + id)]
+          end
+
+          graph.query([nil, Vocab[:citation], nil]).each do |statement|
+            graph <<[statement.subject, ::RDF::Vocab::DC.references, statement.object]
+            graph.delete(statement)
+          end
+
+          graph.query([nil, Vocab[:x_ref], nil]).each do |statement|
+            label = nil
+            graph.query([statement.subject, ::RDF::Vocab::RDFS.label, nil]).each do |ev|
+              label = ev.object.to_s
+            end
+            graph <<[statement.subject, ::RDF::Vocab::DC.references, statement.object]
+            cid = nil
+            cdb = nil
+            graph.query([statement.object, nil, nil]).each do |data|
+              case data.predicate
+              when Vocab[:id]
+                cid = data.object.to_s
+                graph << [data.subject, ::RDF::Vocab::DC.identifier , data.object]
+                if cdb != nil
+                  ref = get_link(cid, cdb, label)
+                  if ref != nil
+                    graph << [data.subject, ::RDF::Vocab::RDFS.seeAlso, ref]
+                  end
+                end
+                graph.delete(data)
+              when Vocab[:db]
+                cdb = data.object.to_s
+                if cid != nil
+                  ref = get_link(cid, cdb, label)
+                  if ref != nil
+                    graph << [data.subject, ::RDF::Vocab::RDFS.seeAlso, ref]
+                  end
+                end
+                graph << [data.subject, ::RDF::Vocab::DC.source, data.object]
+                graph.delete(data)
+              when ::RDF.type
+                graph << [data.subject, ::RDF.type, ::RDF::Vocab::BIBO.Webpage]
+              end
+            end
+            graph.delete(statement)
+          end
+
+          graph.query([nil, Vocab[:molecular_consequence], nil]).each do |statement|
+            graph.query([statement.object, nil, nil]).each do |data|
+              case data.predicate
+              when Vocab[:type]
+                graph << [data.subject, ::RDF::Vocab::RDFS.label, data.object]
+              when Vocab[:id]
+                graph << [data.subject, ::RDF::Vocab::DC.identifier, data.object]
+                graph << [data.subject, ::RDF::Vocab::RDFS.seeAlso, SO[data.object.to_s]]
+              end
+              graph.delete(data)
+            end
+          end
+
+          graph.query([nil, Vocab[:trait_set], nil]).each do |lstatement|
+            graph.query([lstatement.object,nil,nil]).each do |statement|
+              case statement.predicate
+              when Vocab[:trait]
+                graph << [subject, M2R[:disease], statement.object]
+              end
+              graph.delete(statement)
+            end
+            graph.delete(lstatement)
+          end
+
+          # Model specific refinement for AttributeSet
+          graph.query([nil,nil,Vocab[:Attribute]]).each do |statement|
+            set_base = nil
+            graph.query([nil,nil,statement.subject]).each do |setstatement|
+              set_base = setstatement.subject
+              graph.delete(setstatement)
+            end
+            ctype = nil
+            cvalue = nil
+            graph.query([statement.subject, nil, nil]).each do |data|
+              case data.predicate
+              when Vocab[:attribute]
+                graph << [set_base, ::RDF::Vocab::RDFS.label, data.object]
+              when Vocab[:type]
+                graph << [set_base, Vocab[:label_type], data.object]
+              end
+              graph.delete(data)
+            end
+            graph.delete(statement)
+          end
+
+          graph.query([nil, Vocab[:type], "Disease"]).each do |statement|
+            graph << [statement.subject, ::RDF.type, M2R[:Disease]]
           end
 
           graph
@@ -67,11 +298,49 @@ module ClinVar
 
       # Attribute specific refinement for Allele ID
       module TypeAlleleRefine
+
+        def trans_gene(graph,statement)
+              target = nil
+              graph.query([statement.object, Vocab[:gene_id], nil]).each do |gstatement|
+                target = gstatement.object
+              end
+              if target != nil
+                graph.query([statement.object, nil, nil]).each do |gstatement|
+                  if gstatement.predicate == Vocab[:gene_id]
+                    graph << [subject, M2R[:gene], ::RDF::URI.new(NCBI_GENE_ID_BASE + gstatement.object.to_s)]
+                  end
+                  graph.delete(gstatement)
+                end
+              else
+                graph << [subject, M2R[:gene], statement.object]
+              end
+        end
+
         def to_rdf
           graph = super
 
+          graph.query([nil, ::RDF.type, Vocab[:Gene]]).each do |statement|
+            graph << [statement.subject, ::RDF.type, M2R[:Gene]]
+          end
+
           if xmlattr_allele_id.present?
             graph << [subject, ::RDF::Vocab::DC.identifier, xmlattr_allele_id]
+          end
+
+          graph.query([subject, nil, nil]).each do |statement|
+            if statement.predicate == Vocab[:gene]
+              trans_gene(graph, statement)
+              graph.delete(statement)
+            end
+          end
+          graph.query([subject, Vocab[:gene_list], nil]).each do |glstatement|
+            graph.query([glstatement.object, nil, nil]).each do |statement|
+              if statement.predicate == Vocab[:gene]
+                trans_gene(graph, statement)
+              end
+              graph.delete(statement)
+            end
+            graph.delete(glstatement)
           end
 
           graph
@@ -130,8 +399,27 @@ module ClinVar
           if xmlattr_hgnc_id.present?
             graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(HGNC_ID_BASE + xmlattr_hgnc_id)]
           end
+
           if xmlattr_gene_id.present?
-            graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(NCBI_GENE_ID_BASE + xmlattr_gene_id)]
+            if $gene_hash.has_key?(xmlattr_gene_id)
+              graph.query([nil, nil, nil]).each do |statement|
+                if statement.predicate != Vocab[:gene_id]
+                  graph.delete(statement)
+                end
+              end
+            end
+            $gene_hash[xmlattr_gene_id] = TRUE
+
+            gene_node = ::RDF::URI.new(NCBI_GENE_ID_BASE + xmlattr_gene_id)
+            graph.query([subject, nil, nil]).each do |statement|
+              if (statement.predicate == Vocab[:hgnc_id])
+                graph << [gene_node, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(HGNC_ID_BASE + xmlattr_hgnc_id)]
+              end
+              graph << [gene_node, statement.predicate, statement.object]
+              if statement.predicate != Vocab[:gene_id]
+                graph.delete(statement)
+              end
+            end
           end
 
           graph
@@ -140,37 +428,40 @@ module ClinVar
         Model::TypeAllele::GeneList::Gene.prepend self
       end
 
-      # Model specific refinement for TypeLocation
-      module TypeLocationRefine
-
+      module TypeCitationRefine
         def to_rdf
           graph = super
 
-          ref = []
-          if (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq).present?
-            ref = graph.select { |s| s.predicate == Vocab[:reference_allele_vcf] }.map { |s| s.object.to_s }.uniq
-          elsif (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele] }.map { |s| s.object.to_s }.uniq).present?
-            ref = graph.select { |s| s.predicate == Vocab[:reference_allele] }.map { |s| s.object.to_s }.uniq
+          cid = nil
+          csource = nil
+          graph.query([subject, nil, nil]).each do |statement|
+            case statement.predicate
+            when Vocab[:id]
+              graph.query([statement.object, nil, nil]).each do |data|
+                if data.predicate == Vocab[:id]
+                  cid = data.object
+                  graph << [subject, ::RDF::Vocab::DC.identifier, cid]
+                elsif data.predicate == Vocab[:source]
+                  csource = data.object
+                  graph << [subject, ::RDF::Vocab::DC.source, csource]
+                end
+                graph.delete(data)
+              end
+              graph.delete(statement)
+            when Vocab[:abbrev]
+              graph << [subject, PRISM[:publicationName], statement.object]
+              graph.delete(statement)
+            end
           end
 
-          s = subject
-
-          alt.each do |x|
-            graph << [s, M2R[:alternative_allele], x]
-          end
-          ref.each do |x|
-            graph << [s, M2R[:reference_allele], x]
-          end
-
-          graph.query([nil, Vocab[:sequence_location], nil]).each do |statement|
-            graph << [statement.subject, FALDO[:location], statement.object]
-            graph.delete(statement)
+          graph << [subject, ::RDF.type, ::RDF::Vocab::BIBO.Article]
+          if cid != nil && csource != nil
+            graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(NCBI_BASE + csource.to_s.downcase + "/" + cid.to_s)]
           end
 
           graph
         end
-
-        Model::TypeLocation.prepend self
+        Model::TypeCitation.prepend self
       end
 
       # Model specific refinement for TypeLocation::SequenceLocation
@@ -192,6 +483,29 @@ module ClinVar
             append_single_position(graph)
           else
             append_positions(graph)
+          end
+
+          graph.query([subject, nil, nil]).each do |statement|
+            case statement.predicate
+            when Vocab[:alternate_allele]
+              graph.delete(statement)
+            when Vocab[:alternate_allele_vcf]
+              graph.delete(statement)
+            when Vocab[:reference_allele]
+              graph.delete(statement)
+            when Vocab[:reference_allele_vcf]
+              graph.delete(statement)
+            when Vocab[:display_start]
+              graph.delete(statement)
+            when Vocab[:display_stop]
+              graph.delete(statement)
+            when Vocab[:start]
+              graph.delete(statement)
+            when Vocab[:stop]
+              graph.delete(statement)
+            when Vocab[:position_vcf]
+              graph.delete(statement)
+            end
           end
 
           graph
@@ -224,7 +538,7 @@ module ClinVar
 
           graph << [subject, ::RDF::Vocab::RDFS.label, "#{xmlattr_chr || '?'}:#{start_val || '?'}:#{xmlattr_assembly || '?'}"]
           if start_val.present?
-            graph << [subject, FALDO.position, start_val]
+            graph << [subject, FALDO.position, start_val.to_i]
           end
           if xmlattr_accession.present?
             graph << [subject, FALDO.reference, ::RDF::URI.new(REFSEQ_ID_BASE + xmlattr_accession)]
@@ -242,14 +556,14 @@ module ClinVar
           stop_val  = xmlattr_stop || xmlattr_display_stop
           graph << [subject, ::RDF.type, FALDO.Region]
           if [xmlattr_inner_start, xmlattr_outer_start].any?
-            append_fuzzy_position(graph, FALDO.begin, xmlattr_inner_start, xmlattr_outer_start)
+            append_fuzzy_position(graph, FALDO.begin, xmlattr_inner_start.to_i, xmlattr_outer_start.to_i)
           else
-            append_position(graph, FALDO.begin, start_val)
+            append_position(graph, FALDO.begin, start_val.to_i)
           end
           if [xmlattr_inner_stop, xmlattr_outer_stop].any?
-            append_fuzzy_position(graph, FALDO.end, xmlattr_inner_stop, xmlattr_outer_stop)
+            append_fuzzy_position(graph, FALDO.end, xmlattr_inner_stop.to_i, xmlattr_outer_stop.to_i)
           else
-            append_position(graph, FALDO.end, stop_val)
+            append_position(graph, FALDO.end, stop_val.to_i)
           end
         end
 
@@ -273,8 +587,8 @@ module ClinVar
           start_val = xmlattr_start || xmlattr_display_start
           stop_val  = xmlattr_stop || xmlattr_display_stop
           graph << [subject, ::RDF.type, FALDO.Region]
-          append_position(graph, FALDO.begin, start_val)
-          append_position(graph, FALDO.end, stop_val)
+          append_position(graph, FALDO.begin, start_val.to_i)
+          append_position(graph, FALDO.end, stop_val.to_i)
         end
 
         def append_position(graph, property, position)
@@ -285,7 +599,7 @@ module ClinVar
           elsif xmlattr_strand == '-'
             graph << [bn, ::RDF.type, FALDO.ReverseStrandPosition]
           end
-          graph << [bn, FALDO.position, position]
+          graph << [bn, FALDO.position, position.to_i]
 
           if xmlattr_accession.present?
             graph << [bn, FALDO.reference, ::RDF::URI.new(REFSEQ_ID_BASE + xmlattr_accession)]
@@ -297,6 +611,66 @@ module ClinVar
         end
 
         Model::TypeLocation::SequenceLocation.prepend self
+      end
+
+      # Model specific refinement for TypeRCVInterpretedCondition
+      module TypeRCVInterpretedConditionRefine
+        def to_rdf
+          graph = super
+          cid = nil
+          cdb = nil
+          graph.query([subject,nil,nil]).each do |statement|
+            case statement.predicate
+            when ::RDF.type
+              graph << [subject, ::RDF.type, M2R[:Disease]]
+              graph.delete(statement)
+            when Vocab[:type_rcv_interpreted_condition]
+              graph << [subject, ::RDF::Vocab::RDFS.label, statement.object]
+              graph.delete(statement)
+            when Vocab[:id]
+              cid = statement.object.to_s
+              if cdb == "MedGen"
+                graph << [subject, ::RDF::Vocab::DC.references, ::RDF::URI.new(NCBI_BASE + "medgen/" + cid)]
+              end
+              graph << [subject, ::RDF::Vocab::DC.identifier, statement.object]
+              graph.delete(statement)
+            when Vocab[:db]
+              cdb = statement.object
+              if cdb == "MedGen" && cid != nil
+                graph << [subject, ::RDF::Vocab::DC.references, ::RDF::URI.new(NCBI_BASE + "medgen/" + cid)]
+              end
+              graph << [subject, ::RDF::Vocab::DC.source, statement.object]
+              graph.delete(statement)
+            end
+          end
+
+          graph
+        end
+        Model::TypeRCVInterpretedCondition.prepend self
+      end
+
+      # Model specific refinement for SetElementSetType
+      module SetElementSetTypeRefine
+        def to_rdf
+          graph = super
+
+          graph.query([subject,Vocab[:element_value],nil]).each do |statement|
+            graph.query([statement.object, nil, nil]).each do |data|
+              case data.predicate
+              when Vocab[:element_value]
+                graph << [subject, ::RDF::Vocab::RDFS.label, data.object]
+              when Vocab[:type]
+                graph << [subject, Vocab[:label_type], data.object]
+              end
+              graph.delete(data)
+            end
+            graph.delete(statement)
+          end
+          graph.delete([subject, ::RDF.type, Vocab[:SetElementSetType]])
+
+          graph
+        end
+        Model::SetElementSetType.prepend self
       end
 
     end
