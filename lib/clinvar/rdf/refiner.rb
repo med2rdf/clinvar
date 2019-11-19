@@ -556,30 +556,23 @@ module ClinVar
           stop_val  = xmlattr_stop || xmlattr_display_stop
           graph << [subject, ::RDF.type, FALDO.Region]
           if [xmlattr_inner_start, xmlattr_outer_start].any?
-            append_fuzzy_position(graph, FALDO.begin, xmlattr_inner_start.to_i, xmlattr_outer_start.to_i)
+            append_fuzzy_position(graph, FALDO.begin, xmlattr_inner_start, xmlattr_outer_start)
           else
             append_position(graph, FALDO.begin, start_val.to_i)
           end
           if [xmlattr_inner_stop, xmlattr_outer_stop].any?
-            append_fuzzy_position(graph, FALDO.end, xmlattr_inner_stop.to_i, xmlattr_outer_stop.to_i)
+            append_fuzzy_position(graph, FALDO.end, xmlattr_inner_stop, xmlattr_outer_stop)
           else
             append_position(graph, FALDO.end, stop_val.to_i)
           end
         end
 
         def append_fuzzy_position(graph, property, inner, outer)
-          graph << [subject, property, bn = ::RDF::Node.new]
-          graph << [bn, ::RDF.type, FALDO.ExactPosition]
-          if xmlattr_strand == '+'
-            graph << [bn, ::RDF.type, FALDO.ForwardStrandPosition]
-          elsif xmlattr_strand == '-'
-            graph << [bn, ::RDF.type, FALDO.ReverseStrandPosition]
-          end
           if inner.present?
-            append_position(graph, FALDO.begin, inner)
+            append_position(graph, property, inner.to_i)
           end
           if outer.present?
-            append_position(graph, FALDO.end, outer)
+            append_position(graph, property, outer.to_i)
           end
         end
 
