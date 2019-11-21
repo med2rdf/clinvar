@@ -276,6 +276,33 @@ module ClinVar
 
           graph << [subject, ::RDF.type, M2R[:Variation]]
 
+          ref = []
+          if (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq).present?
+            ref = graph.select { |s| s.predicate == Vocab[:reference_allele_vcf] }.map { |s| s.object.to_s }.uniq
+          elsif (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele] }.map { |s| s.object.to_s }.uniq).present?
+            ref = graph.select { |s| s.predicate == Vocab[:reference_allele] }.map { |s| s.object.to_s }.uniq
+          end
+
+          alt.each do |x|
+            graph << [subject, M2R[:alternative_allele], x]
+          end
+          ref.each do |x|
+            graph << [subject, M2R[:reference_allele], x]
+          end
+
+          graph.query([nil,Vocab[:alternate_allele_vcf], nil]).each do |statement|
+            graph.delete(statement)
+          end
+          graph.query([nil,Vocab[:reference_allele_vcf], nil]).each do |statement|
+            graph.delete(statement)
+          end
+          graph.query([nil,Vocab[:alternate_allele], nil]).each do |statement|
+            graph.delete(statement)
+          end
+          graph.query([nil,Vocab[:reference_allele], nil]).each do |statement|
+            graph.delete(statement)
+          end
+
           graph.query([nil,Vocab[:location],nil]).each do |lstatement|
             graph.query([lstatement.object, nil, nil]).each do |statement|
               case statement.predicate
@@ -450,20 +477,6 @@ module ClinVar
         def to_rdf
           graph = super
 
-          ref = []
-          if (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele_vcf] }.map { |s| s.object.to_s }.uniq).present?
-            ref = graph.select { |s| s.predicate == Vocab[:reference_allele_vcf] }.map { |s| s.object.to_s }.uniq
-          elsif (alt = graph.select { |s| s.predicate == Vocab[:alternate_allele] }.map { |s| s.object.to_s }.uniq).present?
-            ref = graph.select { |s| s.predicate == Vocab[:reference_allele] }.map { |s| s.object.to_s }.uniq
-          end
-
-          alt.each do |x|
-            graph << [subject, M2R[:alternative_allele], x]
-          end
-          ref.each do |x|
-            graph << [subject, M2R[:reference_allele], x]
-          end
-
           start_val = xmlattr_start || xmlattr_display_start
           stop_val  = xmlattr_stop || xmlattr_display_stop
 
@@ -478,14 +491,6 @@ module ClinVar
 
           graph.query([subject, nil, nil]).each do |statement|
             case statement.predicate
-            when Vocab[:alternate_allele]
-              graph.delete(statement)
-            when Vocab[:alternate_allele_vcf]
-              graph.delete(statement)
-            when Vocab[:reference_allele]
-              graph.delete(statement)
-            when Vocab[:reference_allele_vcf]
-              graph.delete(statement)
             when Vocab[:display_start]
               graph.delete(statement)
             when Vocab[:display_stop]
