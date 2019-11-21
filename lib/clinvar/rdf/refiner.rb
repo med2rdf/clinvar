@@ -114,6 +114,8 @@ module ClinVar
                   return ::RDF::URI.new(NCBI_BASE + "dbvar/variants/" + cid)
                 when "MedGen"
                   return ::RDF::URI.new(NCBI_BASE + "medgen/" + cid)
+                when "MeSH"
+                  return ::RDF::URI.new(MESH_BASE + "ui?ui=" + cid)
                 when "OMIM"
                   return ::RDF::URI.new(OMIM_BASE + cid.gsub(/\..+$/,""))
                 when "Orphanet"
@@ -274,15 +276,15 @@ module ClinVar
 
           graph << [subject, ::RDF.type, M2R[:Variation]]
 
-          graph.query([subject,Vocab[:location],nil]).each do |lstatement|
+          graph.query([nil,Vocab[:location],nil]).each do |lstatement|
             graph.query([lstatement.object, nil, nil]).each do |statement|
               case statement.predicate
               when Vocab[:sequence_location]
-                graph << [subject, FALDO[:location], statement.object]
+                graph << [lstatement.subject, FALDO[:location], statement.object]
               when ::RDF.type
                 nil
               else
-                graph << [subject, statement.predicate, statement.object]
+                graph << [lstatement.subject, statement.predicate, statement.object]
               end
               graph.delete(statement)
             end
@@ -403,11 +405,11 @@ module ClinVar
         def to_rdf
           graph = super
 
-          cid = nil
-          csource = nil
           graph.query([subject, nil, nil]).each do |statement|
             case statement.predicate
             when Vocab[:id]
+              cid = nil
+              csource = nil
               graph.query([statement.object, nil, nil]).each do |data|
                 if data.predicate == Vocab[:id]
                   cid = data.object
@@ -418,16 +420,20 @@ module ClinVar
                 end
                 graph.delete(data)
               end
+              graph << [subject, ::RDF.type, ::RDF::Vocab::BIBO.Article]
+              if cid != nil
+                case csource
+                when "DOI"
+                  graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(DOI_BASE + cid.to_s)]
+                else
+                  graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(NCBI_BASE + csource.to_s.downcase + "/" + cid.to_s)]
+                end
+              end
               graph.delete(statement)
             when Vocab[:abbrev]
               graph << [subject, PRISM[:publicationName], statement.object]
               graph.delete(statement)
             end
-          end
-
-          graph << [subject, ::RDF.type, ::RDF::Vocab::BIBO.Article]
-          if cid != nil && csource != nil
-            graph << [subject, ::RDF::Vocab::RDFS.seeAlso, ::RDF::URI.new(NCBI_BASE + csource.to_s.downcase + "/" + cid.to_s)]
           end
 
           graph

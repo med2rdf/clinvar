@@ -10,6 +10,7 @@ module ClinVar
     NCBI_GENE_ID_BASE = 'http://ncbi.nlm.nih.gov/gene/'.freeze
     REFSEQ_ID_BASE    = 'http://identifiers.org/refseq/'.freeze
     NCBI_BASE         = 'http://ncbi.nlm.nih.gov/'.freeze
+    DOI_BASE          = 'http://doi.org/'.freeze
     OMIM_BASE         = 'http://omim.org/entry/'.freeze
     UNIPROT_BASE      = 'http://uniprot.org/uniprot/'.freeze
     OBO_BASE          = 'http://purl.obolibrary.org/obo/'.freeze
@@ -17,6 +18,7 @@ module ClinVar
     GHR_BASE          = 'http://ghr.nlm.nih.gov/'.freeze
     GARD_BASE         = 'http://rarediseases.info.nih.gov/diseases/'.freeze
     TSC_BASE          = 'http://chromium.lovd.nl/LOVD2/TSC/'.freeze
+    MESH_BASE         = 'http://meshb.nlm.nih.gov/record/'.freeze
 
     FALDO = ::RDF::Vocabulary.new('http://biohackathon.org/resource/faldo#')
     HCO   = ::RDF::Vocabulary.new('http://identifiers.org/hco/')

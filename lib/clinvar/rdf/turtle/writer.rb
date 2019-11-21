@@ -34,7 +34,9 @@ module ClinVar
           orpha:     ORPHA_BASE,
           ghr:       GHR_BASE,
           gard:      GARD_BASE,
-          tsc:       TSC_BASE
+          tsc:       TSC_BASE,
+          doi:       DOI_BASE,
+          mesh:      MESH_BASE
         }
 
         class << self
