@@ -1,0 +1,321 @@
+@prefix bibo: <http://purl.org/ontology/bibo/> .
+@prefix clinvar: <http://ncbi.nlm.nih.gov/clinvar/variation/> .
+@prefix cvo: <http://purl.jp/bio/10/clinvar/> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix doi: <http://doi.org/> .
+@prefix faldo: <http://biohackathon.org/resource/faldo#> .
+@prefix gard: <http://rarediseases.info.nih.gov/diseases/> .
+@prefix ghr: <http://ghr.nlm.nih.gov/> .
+@prefix hbnc: <http://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:> .
+@prefix hco: <http://identifiers.org/hco/> .
+@prefix m2r: <http://med2rdf.org/ontology/med2rdf#> .
+@prefix mesh: <http://meshb.nlm.nih.gov/record/> .
+@prefix ncbi_gene: <http://ncbi.nlm.nih.gov/gene/> .
+@prefix obo: <http://purl.obolibrary.org/obo/> .
+@prefix omim: <http://omim.org/entry/> .
+@prefix orpha: <http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Expert=> .
+@prefix prism: <http://prismstandard.org/namespaces/1.2/basic/> .
+@prefix rcv: <http://identifiers.org/clinvar.record:> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix refseq: <http://identifiers.org/refseq/> .
+@prefix scv: <http://identifiers.org/clinvar.submission:> .
+@prefix so: <http://www.sequenceontology.org/browser/current_svn/term/> .
+@prefix tsc: <http://chromium.lovd.nl/LOVD2/TSC/> .
+@prefix uniprot: <http://uniprot.org/uniprot/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+
+<http://ncbi.nlm.nih.gov/clinvar/variation/241112>
+    m2r:disease [
+        cvo:attribute_set [
+            cvo:label_type "public definition" ;
+            dc:references [
+                dc:identifier "NBK1122" ;
+                dc:source "GeneReviews" ;
+                a cvo:TypeXref, bibo:Webpage ;
+                rdfs:seeAlso <http://ncbi.nlm.nih.gov/bookshelf/NBK1122>
+            ] ;
+            a cvo:AttributeSet ;
+            rdfs:label "Primary ciliary dyskinesia (PCD) is associated with situs abnormalities, abnormal sperm motility, and abnormal ciliary structure and function that result in retention of mucus and bacteria in the respiratory tract leading to chronic otosinopulmonary disease. More than 75% of full-term neonates with PCD have \"neonatal respiratory distress\" requiring supplemental oxygen for days to weeks. Chronic airway infection, apparent in early childhood, results in bronchiectasis that is almost uniformly present in adulthood. Nasal congestion and sinus infections, apparent in early childhood, persist through adulthood. Chronic/recurrent ear infection, apparent in most young children, can be associated with transient or later irreversible hearing loss. Situs inversus totalis (mirror-image reversal of all visceral organs with no apparent physiologic consequences) is present in 40%-50% of individuals with PCD; heterotaxy (discordance of right and left patterns of ordinarily asymmetric structures that can be associated with significant malformations) is present in approximately 12%. Virtually all males with PCD are infertile as a result of abnormal sperm motility."
+        ] ;
+        cvo:id 815 ;
+        cvo:name [
+            cvo:label_type "Preferred" ;
+            dc:references [
+                dc:identifier "Ciliary+dyskinesia%2C+primary%2C+6/7989" ;
+                dc:source "Genetic Alliance" ;
+                a cvo:TypeXref, bibo:Webpage
+            ] ;
+            rdfs:label "Ciliary dyskinesia, primary, 6"
+        ], [
+            cvo:label_type "Alternate" ;
+            rdfs:label "Primary Ciliary Dyskinesia 6: TXNDC3-Related Primary Ciliary Dyskinesia"
+        ] ;
+        cvo:symbol [
+            cvo:label_type "Preferred" ;
+            dc:references [
+                cvo:type "MIM" ;
+                dc:identifier "610852" ;
+                dc:source "OMIM" ;
+                a cvo:TypeXref, bibo:Webpage ;
+                rdfs:seeAlso <http://omim.org/entry/610852>
+            ] ;
+            rdfs:label "CILD6"
+        ] ;
+        cvo:type "Disease" ;
+        dc:references [
+            cvo:type "MIM" ;
+            dc:identifier "610852" ;
+            dc:source "OMIM" ;
+            a cvo:TypeXref, bibo:Webpage ;
+            rdfs:seeAlso <http://omim.org/entry/610852>
+        ], [
+            prism:publicationName "GeneReviews" ;
+            cvo:type "review" ;
+            dc:identifier "20301301", "NBK1122" ;
+            dc:source "BookShelf", "PubMed" ;
+            a cvo:TypeCitation, bibo:Article ;
+            rdfs:seeAlso <http://ncbi.nlm.nih.gov/bookshelf/NBK1122>, <http://ncbi.nlm.nih.gov/pubmed/20301301>
+        ] ;
+        a m2r:Disease, cvo:ClinAsserTraitType
+    ] ;
+    cvo:accession "VCV000241112" ;
+    cvo:date_created "2016-06-29"^^xsd:date ;
+    cvo:date_last_updated "2019-10-27"^^xsd:date ;
+    cvo:interpreted_record [
+        cvo:clinical_assertion [
+            cvo:assertion "variation to disease" ;
+            cvo:attribute_set [
+                cvo:label_type "AssertionMethod" ;
+                dc:references [
+                    dc:identifier "25741868" ;
+                    dc:source "PubMed" ;
+                    a cvo:TypeCitation, bibo:Article ;
+                    rdfs:seeAlso <http://ncbi.nlm.nih.gov/pubmed/25741868>
+                ] ;
+                a cvo:AttributeSet ;
+                rdfs:label "ACMG Guidelines, 2015"
+            ] ;
+            cvo:clin_var_accession [
+                cvo:accession "SCV000312747" ;
+                cvo:org_id 239772 ;
+                cvo:organization_category "laboratory" ;
+                cvo:submitter_name "PreventionGenetics,PreventionGenetics" ;
+                cvo:type "SCV" ;
+                cvo:version 1 ;
+                dc:identifier "SCV000312747" ;
+                a cvo:ClinVarAccession ;
+                rdfs:seeAlso scv:SCV000312747
+            ] ;
+            cvo:clin_var_submission_id [
+                cvo:local_key "NM_016616.4:c.57G>A|NOT SPECIFIED" ;
+                cvo:submitted_assembly "GRCh37" ;
+                a cvo:ClinVarSubmissionID
+            ] ;
+            cvo:date_created "2016-09-28"^^xsd:date ;
+            cvo:date_last_updated "2019-11-02"^^xsd:date ;
+            cvo:id 594429 ;
+            cvo:interpretation [
+                cvo:description "Likely benign" ;
+                a cvo:TypeSingleInterpretation
+            ] ;
+            cvo:observed_in [
+                cvo:method [
+                    cvo:method_type "clinical testing" ;
+                    a cvo:C_Method
+                ] ;
+                cvo:observed_data [
+                    cvo:label_type "Description" ;
+                    a cvo:ObservedData ;
+                    rdfs:label "not provided"
+                ] ;
+                cvo:sample [
+                    cvo:affected_status "unknown" ;
+                    cvo:origin "germline" ;
+                    cvo:species [
+                        cvo:species "human" ;
+                        cvo:taxonomy_id 9606 ;
+                        a cvo:Species
+                    ] ;
+                    a cvo:TypeSample
+                ] ;
+                a cvo:ObservationSet
+            ] ;
+            cvo:record_status "current" ;
+            cvo:review_status "criteria provided, single submitter" ;
+            cvo:simple_allele [
+                cvo:attribute_set [
+                    cvo:label_type "HGVS" ;
+                    a cvo:TypeAttributeSet ;
+                    rdfs:label "NM_016616.4:c.57G>A"
+                ] ;
+                cvo:variant_type "Variation" ;
+                a m2r:Variation, cvo:TypeAlleleSCV
+            ] ;
+            cvo:submission_date "2016-04-28"^^xsd:date ;
+            a cvo:MeasureTraitType
+        ] ;
+        cvo:rcv_list [
+            cvo:rcv_accession [
+                cvo:accession "RCV000233367" ;
+                cvo:date_last_evaluated "2016-02-16"^^xsd:date ;
+                cvo:interpretation "Likely benign" ;
+                cvo:interpreted_condition [
+                    dc:identifier "C1970506" ;
+                    dc:references <http://ncbi.nlm.nih.gov/medgen/C1970506> ;
+                    dc:source "MedGen" ;
+                    a m2r:Disease ;
+                    rdfs:label "Ciliary dyskinesia, primary, 6"
+                ] ;
+                cvo:review_status "criteria provided, single submitter" ;
+                cvo:submission_count 1 ;
+                cvo:title "NM_016616.5(NME8):c.57G>A (p.Leu19=) AND Ciliary dyskinesia, primary, 6" ;
+                cvo:version 1 ;
+                dc:identifier "RCV000233367" ;
+                a cvo:TypeRCV ;
+                rdfs:seeAlso rcv:RCV000233367
+            ] ;
+            a cvo:RCVList
+        ] ;
+        cvo:review_status "criteria provided, multiple submitters, no conflicts" ;
+        <http://semanticscience.org/resource/SIO_000255> [
+            cvo:date_last_evaluated "2016-02-16"^^xsd:date ;
+            cvo:description "Likely benign" ;
+            cvo:number_of_submissions 2 ;
+            cvo:number_of_submitters 2 ;
+            cvo:type "Clinical significance" ;
+            a cvo:TypeAggregatedInterpretation, <http://semanticscience.org/resource/SIO_000897>
+        ] ;
+        <http://semanticscience.org/resource/SIO_000628> [
+            faldo:location [
+                faldo:position 37890003 ;
+                faldo:reference <http://identifiers.org/hco/7#GRCh37>, <http://identifiers.org/refseq/NC_000007.13> ;
+                cvo:accession "NC_000007.13" ;
+                cvo:assembly "GRCh37" ;
+                cvo:assembly_accession_version "GCF_000001405.25" ;
+                cvo:assembly_status "previous" ;
+                cvo:chr "7" ;
+                cvo:variant_length 1 ;
+                a faldo:ExactPosition, cvo:SequenceLocation ;
+                rdfs:label "7:37890003:GRCh37"
+            ] ;
+            m2r:alternative_allele "A" ;
+            m2r:gene <http://ncbi.nlm.nih.gov/gene/51314> ;
+            m2r:reference_allele "G" ;
+            cvo:allele_frequency [
+                cvo:source "Exome Aggregation Consortium (ExAC)" ;
+                cvo:value "+1e-5" ;
+                a cvo:AlleleFrequency
+            ] ;
+            cvo:allele_id 240083 ;
+            cvo:cytogenetic_location "7p14.1" ;
+            cvo:hgvs [
+                cvo:molecular_consequence [
+                    dc:identifier "SO:0001819" ;
+                    rdfs:label "synonymous variant" ;
+                    rdfs:seeAlso <http://www.sequenceontology.org/browser/current_svn/term/SO:0001819>
+                ] ;
+                cvo:nucleotide_expression [
+                    cvo:change "c.57G>A" ;
+                    cvo:expression "NM_016616.5:c.57G>A" ;
+                    cvo:sequence_accession "NM_016616" ;
+                    cvo:sequence_accession_version "NM_016616.5" ;
+                    cvo:sequence_version "5" ;
+                    a cvo:TypeNucleotideSequenceExpression
+                ] ;
+                cvo:protein_expression [
+                    cvo:change "p.Leu19=" ;
+                    cvo:expression "NP_057700.3:p.Leu19=" ;
+                    cvo:sequence_accession "NP_057700" ;
+                    cvo:sequence_accession_version "NP_057700.3" ;
+                    cvo:sequence_version "3" ;
+                    a cvo:TypeProteinSequenceExpression
+                ] ;
+                cvo:type "coding" ;
+                a cvo:TypeHGVSExpression
+            ], [
+                cvo:assembly "GRCh37" ;
+                cvo:nucleotide_expression [
+                    cvo:assembly "GRCh37" ;
+                    cvo:change "g.37890003G>A" ;
+                    cvo:expression "NC_000007.13:g.37890003G>A" ;
+                    cvo:sequence_accession "NC_000007" ;
+                    cvo:sequence_accession_version "NC_000007.13" ;
+                    cvo:sequence_version "13" ;
+                    a cvo:TypeNucleotideSequenceExpression
+                ] ;
+                cvo:type "genomic, top-level" ;
+                a cvo:TypeHGVSExpression
+            ] ;
+            cvo:name "NM_016616.5(NME8):c.57G>A (p.Leu19=)" ;
+            cvo:variant_type "single nucleotide variant" ;
+            cvo:variation_id 241112 ;
+            dc:identifier "240083" ;
+            dc:references [
+                cvo:type "rs" ;
+                dc:identifier "752092011" ;
+                dc:source "dbSNP" ;
+                a cvo:TypeXref, bibo:Webpage ;
+                rdfs:seeAlso <http://ncbi.nlm.nih.gov/snp/rs752092011>
+            ] ;
+            a m2r:Variation, cvo:TypeAllele
+        ], [
+            cvo:label_type "MedGen" ;
+            dc:references [
+                dc:identifier "C1970506" ;
+                dc:source "MedGen" ;
+                a bibo:Webpage ;
+                rdfs:label "Ciliary dyskinesia, primary, 6" ;
+                rdfs:seeAlso <http://ncbi.nlm.nih.gov/medgen/C1970506>
+            ] ;
+            a m2r:Disease, cvo:TraitMapping ;
+            rdfs:label "C1970506"
+        ] ;
+        a cvo:InterpretedRecord, <http://semanticscience.org/resource/SIO_001122>
+    ] ;
+    cvo:number_of_submissions 2 ;
+    cvo:number_of_submitters 2 ;
+    cvo:record_status "current" ;
+    cvo:record_type "interpreted" ;
+    cvo:species "Homo sapiens" ;
+    cvo:variation_id 241112 ;
+    cvo:variation_name "NM_016616.5(NME8):c.57G>A (p.Leu19=)" ;
+    cvo:variation_type "single nucleotide variant" ;
+    cvo:version 1 ;
+    dc:created "2016-06-29" ;
+    dc:modified "2019-10-27" ;
+    a cvo:VariationArchiveType ;
+    rdfs:label "NM_016616.5(NME8):c.57G>A (p.Leu19=)" ;
+    rdfs:seeAlso <http://ncbi.nlm.nih.gov/clinvar/variation/241112> .
+
+<http://ncbi.nlm.nih.gov/gene/51314>
+    faldo:location [
+        faldo:begin [
+            faldo:position 37888198 ;
+            faldo:reference <http://identifiers.org/hco/7#GRCh37>, <http://identifiers.org/refseq/NC_000007.13> ;
+            a faldo:ExactPosition, faldo:ForwardStrandPosition
+        ] ;
+        faldo:end [
+            faldo:position 37940002 ;
+            faldo:reference <http://identifiers.org/hco/7#GRCh37>, <http://identifiers.org/refseq/NC_000007.13> ;
+            a faldo:ExactPosition, faldo:ForwardStrandPosition
+        ] ;
+        cvo:accession "NC_000007.13" ;
+        cvo:assembly "GRCh37" ;
+        cvo:assembly_accession_version "GCF_000001405.25" ;
+        cvo:assembly_status "previous" ;
+        cvo:chr "7" ;
+        cvo:strand "+" ;
+        a faldo:Region, cvo:SequenceLocation
+    ] ;
+    cvo:cytogenetic_location "7p14.1" ;
+    cvo:full_name "NME/NM23 family member 8" ;
+    cvo:gene_id 51314 ;
+    cvo:hgnc_id "HGNC:16473" ;
+    cvo:omim 607421 ;
+    cvo:relationship_type "within single gene" ;
+    cvo:source "submitted" ;
+    cvo:symbol "NME8" ;
+    a m2r:Gene, cvo:Gene ;
+    rdfs:seeAlso <http://www.genenames.org/data/gene-symbol-report/#!/hgnc_id/HGNC:HGNC:16473> .
+
