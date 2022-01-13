@@ -150,9 +150,13 @@ module ClinVar
         if value.is_a? Array
           value.each do |x|
             if x.is_a? Hash
-              s = ::RDF::Node.new
-              graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], s]
-              graph << klass.build(x).subject(s)
+              if klass.respond_to?(:build)
+                s = ::RDF::Node.new
+                graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], s]
+                graph << klass.build(x).subject(s)
+              else
+                graph << [subject, ClinVar::RDF::Vocab[element_name.to_s.underscore], x['content']]
+              end
             elsif x.is_a?(String) && (str = x.match(/^"?(.*)"?$/))
               graph << [subject, ClinVar::RDF::Vocab["#{element_name.to_s.underscore}"], str[1]]
             else
