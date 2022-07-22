@@ -86,7 +86,7 @@ GEM
     sxp (1.0.1)
       rdf (>= 2.2, < 4.0)
     thread_safe (0.3.6)
-    tzinfo (1.2.5)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     xml-simple (1.1.5)
     yard (0.9.16)
