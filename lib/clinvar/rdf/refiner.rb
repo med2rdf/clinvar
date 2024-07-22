@@ -13,7 +13,7 @@ module ClinVar
       $gene_hash = Hash.new
 
 
-      module InterpretedRecordRefine
+      module ClassifiedRecordRefine
         def to_rdf
           graph = super
 
@@ -65,7 +65,7 @@ module ClinVar
 
           graph
         end
-        Model::InterpretedRecord.prepend self
+        Model::ClassifiedRecord.prepend self
       end
 
       # Attribute specific refinement for RCV accession
@@ -248,7 +248,7 @@ module ClinVar
 
         Model::VariationArchiveType.prepend self
         Model::TypeRecordHistory.prepend self
-        Model::IncludedRecord::InterpretedVariationList::InterpretedVariation.prepend self
+        Model::IncludedRecord::ClassifiedVariationList::ClassifiedVariation.prepend self
       end
 
       # Attribute specific refinement for Allele ID
