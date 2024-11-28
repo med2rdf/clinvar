@@ -31,7 +31,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'simplecov'
   spec.add_development_dependency 'yard'
 
-  spec.add_dependency 'activesupport', '~> 5.2', '>= 5.2.1'
+  spec.add_dependency 'activesupport', '>= 5.2.1', '< 8.0'
   spec.add_dependency 'activemodel', '~> 5.2', '>= 5.2.1'
   spec.add_dependency 'logger-application'
   spec.add_dependency 'rdf', '~> 3.0', '>= 3.0.4'
