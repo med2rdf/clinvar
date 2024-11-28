@@ -43,7 +43,7 @@ GEM
       concurrent-ruby (~> 1.0)
     i18n (1.1.1)
       concurrent-ruby (~> 1.0)
-    json (2.1.0)
+    json (2.3.1)
     link_header (0.0.8)
     logger-application (0.0.2)
     method_source (0.9.1)
